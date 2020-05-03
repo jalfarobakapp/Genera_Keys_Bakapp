@@ -4,36 +4,45 @@ Imports DevComponents.DotNetBar
 
 Public Class Frm_Lista_UserXEmpresas
 
-    Public _RutEmpresa As String
-    Public _NombreEmpresa As String
 
-    Dim _Class_SQL_Mibase As New Class_SQL(_CadenaLocal)
+    Dim _SQLite As Class_SQLite
+    Dim Consulta_sql As String
+    Dim _Base_SQlLite_Local As String = Application.StartupPath & "\Db\" & "Genera_Keys_BakApp.db"
+
+    Dim _Row_Empresa As DataRow
 
     Dim _Cadena_Conexion_Base_Cliente As String
     Dim _Base_BakApp As String
 
-    Public Sub New(ByVal Cadena_Conexion_Base_Cliente As String, _
-                   ByVal Base_BakApp As String)
+    Public Sub New(Row_Empresa As DataRow,
+                   Cadena_Conexion_Base_Cliente As String,
+                   Base_BakApp As String)
 
         ' Llamada necesaria para el Diseñador de Windows Forms.
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+
         _Cadena_Conexion_Base_Cliente = Cadena_Conexion_Base_Cliente
         _Base_BakApp = Base_BakApp
+        _Row_Empresa = Row_Empresa
+
+        _SQLite = New Class_SQLite(_Base_SQlLite_Local)
+
+        Formato_Generico_Grilla(Grilla, 18, New Font("Tahoma", 8), Color.AliceBlue, True, False)
 
     End Sub
 
     Sub Sb_Actualizar_Grilla()
 
-        Formato_Generico_Grilla(Grilla, 18, New Font("Tahoma", 8), Color.AliceBlue, True, False)
+        Dim _Rut = _Row_Empresa.Item("Rut")
 
-        Consulta_sql = "Select *,CONVERT(VARCHAR, Fecha_Activacion, 103) Fecha From Zw_PcXEmpresa" & vbCrLf & _
-                   "Where Rut = '" & _RutEmpresa & "'"
+        Consulta_sql = "Select * From Zw_PcXEmpresa Where Rut = '" & _Rut & "'"
+        Dim _Tbl As DataTable = _SQLite.Fx_Get_Tablas(Consulta_sql)
 
         With Grilla
 
-            .DataSource = _Class_SQL_Mibase.Fx_Get_Tablas(Consulta_sql) 'get_Tablas(_Sql, cn3, 4, _CadenaLocal)
+            .DataSource = _Tbl
 
             OcultarEncabezadoGrilla(Grilla, True)
 
@@ -45,13 +54,11 @@ Public Class Frm_Lista_UserXEmpresas
             .Columns("Llave").HeaderText = "Llave"
             .Columns("Llave").Visible = True
 
-            .Columns("Fecha").Width = 100
-            .Columns("Fecha").HeaderText = "Fecha vigencia"
-            .Columns("Fecha").Visible = True
+            .Columns("Fecha_Activacion").Width = 100
+            .Columns("Fecha_Activacion").HeaderText = "Fecha vigencia"
+            .Columns("Fecha_Activacion").Visible = True
 
         End With
-
-        'MarcarGrilla()
 
     End Sub
 
@@ -62,20 +69,16 @@ Public Class Frm_Lista_UserXEmpresas
     Private Sub BtnAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnAgregar.Click
 
         Dim Fm As New Frm_Genera_Key_Usuarios(_Cadena_Conexion_Base_Cliente, _Base_BakApp)
-        Fm.TxtRut.Text = _RutEmpresa
-        Fm.TxtNombreEmpresa.Text = _NombreEmpresa
+        Fm.TxtRut.Text = _Row_Empresa.Item("Rut")
+        Fm.TxtNombreEmpresa.Text = _Row_Empresa.Item("Razon")
         Fm.ShowDialog(Me)
-        If Fm._Grabar Then Sb_Actualizar_Grilla()
+        If Fm.Grabar Then Sb_Actualizar_Grilla()
         Fm.Dispose()
 
     End Sub
 
     Private Sub BtnxSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.Close()
-    End Sub
-
-    Private Sub Grilla_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles Grilla.CellDoubleClick
-
     End Sub
 
 End Class

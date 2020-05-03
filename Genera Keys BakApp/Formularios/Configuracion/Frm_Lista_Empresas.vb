@@ -4,8 +4,23 @@ Imports System.Data.SqlClient
 
 Public Class Frm_Lista_Empresas
 
-    Dim Directorio As String = Application.StartupPath & "\Data\"
-    
+    Dim _SQLite As Class_SQLite
+    Dim Consulta_sql As String
+    Dim _Base_SQlLite_Local As String = Application.StartupPath & "\Db\" & "Genera_Keys_BakApp.db"
+
+    'Dim Directorio As String = Application.StartupPath & "\Data\"
+
+    Public Sub New()
+
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+
+        _SQLite = New Class_SQLite(_Base_SQlLite_Local)
+
+    End Sub
+
     Private Sub Frm_Lista_Empresas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
 
@@ -18,12 +33,12 @@ Public Class Frm_Lista_Empresas
 
     Sub Sb_Actualizar_Grilla()
 
-
-        Dim _Sql = "Select *,CONVERT(VARCHAR, Fecha_caduca, 103) Fecha From Zw_Empresas"
+        Consulta_sql = "Select * From Zw_Empresas"
+        Dim _Tbl As DataTable = _SQLite.Fx_Get_Tablas(Consulta_sql)
 
         With Grilla
 
-            .DataSource = get_Tablas(_Sql, cn3, 4, _CadenaLocal)
+            .DataSource = _Tbl 'get_Tablas(_Sql, cn3, 4, _CadenaLocal)
 
             OcultarEncabezadoGrilla(Grilla, True)
 
@@ -39,9 +54,9 @@ Public Class Frm_Lista_Empresas
             .Columns("Cant_licencias").HeaderText = "Licencias"
             .Columns("Cant_licencias").Visible = True
 
-            .Columns("Fecha").Width = 100
-            .Columns("Fecha").HeaderText = "Nro Licencia"
-            .Columns("Fecha").Visible = True
+            .Columns("Fecha_caduca").Width = 100
+            .Columns("Fecha_caduca").HeaderText = "Nro Licencia"
+            .Columns("Fecha_caduca").Visible = True
 
         End With
 
@@ -82,16 +97,16 @@ Public Class Frm_Lista_Empresas
 
         Consulta_sql = "Select * From Zw_Empresas Where Rut = '" & _RutFila & "'"
 
-        Dim _TblEmpresa As DataTable = get_Tablas(Consulta_sql, cn3, 4, _CadenaLocal)
-        Dim _FilaR As DataRow = _TblEmpresa.Rows(0)
+        'Dim _TblEmpresa As DataTable = _SQLite.Fx_Get_DataRow(Consulta_sql) ' get_Tablas(Consulta_sql, cn3, 4, _CadenaLocal)
+        Dim _FilaR As DataRow = _SQLite.Fx_Get_DataRow(Consulta_sql) '_TblEmpresa.Rows(0)
 
         Dim Fm As New Frm_Genera_Key_Empresa
-        Fm._TblEmpresa = _FilaR
-
+        Fm.Row_Empresa = _FilaR
         Fm.Text = _RutFila & ", " & _RazonFila
         Fm.ShowDialog(Me)
-
-        If Fm._Grabar Then Sb_Actualizar_Grilla()
+        If Fm.Grabar Then Sb_Actualizar_Grilla()
+        Fm.Dispose()
 
     End Sub
+
 End Class

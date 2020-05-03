@@ -23,19 +23,18 @@ Partial Class Frm_Genera_Key_Usuarios
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Genera_Key_Usuarios))
-        Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel
-        Me.TxtRut = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.LabelX4 = New DevComponents.DotNetBar.LabelX
-        Me.TxtNombreEmpresa = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.LabelX6 = New DevComponents.DotNetBar.LabelX
-        Me.TxtKeyLicencia = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.Bar1 = New DevComponents.DotNetBar.Bar
-        Me.BtnAceptar = New DevComponents.DotNetBar.ButtonItem
-        Me.BtnGrabar = New DevComponents.DotNetBar.ButtonItem
-        Me.BtnxSalir = New DevComponents.DotNetBar.ButtonItem
-        Me.LabelX2 = New DevComponents.DotNetBar.LabelX
-        Me.LabelX1 = New DevComponents.DotNetBar.LabelX
-        Me.TxtNombreEstacion = New DevComponents.DotNetBar.Controls.TextBoxX
+        Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.TxtRut = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TxtNombreEstacion = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtNombreEmpresa = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtKeyLicencia = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.Bar1 = New DevComponents.DotNetBar.Bar()
+        Me.BtnAceptar = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtnGrabar = New DevComponents.DotNetBar.ButtonItem()
+        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
         Me.GroupPanel1.SuspendLayout()
         CType(Me.Bar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -101,6 +100,40 @@ Partial Class Frm_Genera_Key_Usuarios
         Me.TxtRut.Size = New System.Drawing.Size(140, 22)
         Me.TxtRut.TabIndex = 50
         Me.TxtRut.WatermarkText = "Largo max. 13"
+        '
+        'TxtNombreEstacion
+        '
+        Me.TxtNombreEstacion.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.TxtNombreEstacion.Border.Class = "TextBoxBorder"
+        Me.TxtNombreEstacion.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtNombreEstacion.DisabledBackColor = System.Drawing.Color.White
+        Me.TxtNombreEstacion.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TxtNombreEstacion.FocusHighlightEnabled = True
+        Me.TxtNombreEstacion.ForeColor = System.Drawing.Color.Black
+        Me.TxtNombreEstacion.Location = New System.Drawing.Point(6, 122)
+        Me.TxtNombreEstacion.Name = "TxtNombreEstacion"
+        Me.TxtNombreEstacion.Size = New System.Drawing.Size(276, 22)
+        Me.TxtNombreEstacion.TabIndex = 60
+        Me.TxtNombreEstacion.WatermarkText = "Largo max. 13"
+        '
+        'LabelX1
+        '
+        Me.LabelX1.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX1.ForeColor = System.Drawing.Color.Black
+        Me.LabelX1.Location = New System.Drawing.Point(6, 102)
+        Me.LabelX1.Name = "LabelX1"
+        Me.LabelX1.Size = New System.Drawing.Size(210, 23)
+        Me.LabelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Metro
+        Me.LabelX1.TabIndex = 61
+        Me.LabelX1.Text = "Nombre del equipo"
         '
         'LabelX4
         '
@@ -176,7 +209,7 @@ Partial Class Frm_Genera_Key_Usuarios
         Me.Bar1.AntiAlias = True
         Me.Bar1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Bar1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Bar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtnAceptar, Me.BtnGrabar, Me.BtnxSalir})
+        Me.Bar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtnAceptar, Me.BtnGrabar})
         Me.Bar1.Location = New System.Drawing.Point(0, 224)
         Me.Bar1.Name = "Bar1"
         Me.Bar1.Size = New System.Drawing.Size(533, 41)
@@ -202,14 +235,6 @@ Partial Class Frm_Genera_Key_Usuarios
         Me.BtnGrabar.Name = "BtnGrabar"
         Me.BtnGrabar.Tooltip = "Grabar"
         '
-        'BtnxSalir
-        '
-        Me.BtnxSalir.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.BtnxSalir.ForeColor = System.Drawing.Color.Black
-        Me.BtnxSalir.Image = CType(resources.GetObject("BtnxSalir.Image"), System.Drawing.Image)
-        Me.BtnxSalir.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far
-        Me.BtnxSalir.Name = "BtnxSalir"
-        '
         'LabelX2
         '
         Me.LabelX2.BackColor = System.Drawing.Color.White
@@ -226,46 +251,11 @@ Partial Class Frm_Genera_Key_Usuarios
         Me.LabelX2.TabIndex = 69
         Me.LabelX2.Text = "N° Licencias"
         '
-        'LabelX1
-        '
-        Me.LabelX1.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX1.ForeColor = System.Drawing.Color.Black
-        Me.LabelX1.Location = New System.Drawing.Point(6, 102)
-        Me.LabelX1.Name = "LabelX1"
-        Me.LabelX1.Size = New System.Drawing.Size(210, 23)
-        Me.LabelX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Metro
-        Me.LabelX1.TabIndex = 61
-        Me.LabelX1.Text = "Nombre del equipo"
-        '
-        'TxtNombreEstacion
-        '
-        Me.TxtNombreEstacion.BackColor = System.Drawing.Color.White
-        '
-        '
-        '
-        Me.TxtNombreEstacion.Border.Class = "TextBoxBorder"
-        Me.TxtNombreEstacion.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TxtNombreEstacion.DisabledBackColor = System.Drawing.Color.White
-        Me.TxtNombreEstacion.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.TxtNombreEstacion.FocusHighlightEnabled = True
-        Me.TxtNombreEstacion.ForeColor = System.Drawing.Color.Black
-        Me.TxtNombreEstacion.Location = New System.Drawing.Point(6, 122)
-        Me.TxtNombreEstacion.Name = "TxtNombreEstacion"
-        Me.TxtNombreEstacion.Size = New System.Drawing.Size(276, 22)
-        Me.TxtNombreEstacion.TabIndex = 60
-        Me.TxtNombreEstacion.WatermarkText = "Largo max. 13"
-        '
         'Frm_Genera_Key_Usuarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(533, 265)
-        Me.ControlBox = False
         Me.Controls.Add(Me.LabelX2)
         Me.Controls.Add(Me.TxtKeyLicencia)
         Me.Controls.Add(Me.Bar1)
@@ -274,6 +264,8 @@ Partial Class Frm_Genera_Key_Usuarios
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "Frm_Genera_Key_Usuarios"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -292,7 +284,6 @@ Partial Class Frm_Genera_Key_Usuarios
     Friend WithEvents Bar1 As DevComponents.DotNetBar.Bar
     Friend WithEvents BtnAceptar As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents BtnGrabar As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents BtnxSalir As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
     Friend WithEvents TxtNombreEstacion As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
