@@ -23,42 +23,41 @@ Partial Class Frm_Conectar
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Conectar))
-        Me.TxtBaseDeDatos = New System.Windows.Forms.TextBox
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.TxtClave = New System.Windows.Forms.TextBox
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.TxtUsuario = New System.Windows.Forms.TextBox
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.TxtPuerto = New System.Windows.Forms.TextBox
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.TxtServidor = New System.Windows.Forms.TextBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Bar1 = New DevComponents.DotNetBar.Bar
-        Me.BtnConectar = New DevComponents.DotNetBar.ButtonItem
-        Me.BtnGrabar = New DevComponents.DotNetBar.ButtonItem
-        Me.BtnLimpiar = New DevComponents.DotNetBar.ButtonItem
-        Me.BtnxSalir = New DevComponents.DotNetBar.ButtonItem
-        Me.GrupoConexion = New DevComponents.DotNetBar.Controls.GroupPanel
-        Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel
-        Me.TxtTelefonos = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.LabelX5 = New DevComponents.DotNetBar.LabelX
-        Me.TxtCiudad = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.LabelX3 = New DevComponents.DotNetBar.LabelX
-        Me.TxtPais = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.LabelX2 = New DevComponents.DotNetBar.LabelX
-        Me.TxtGiro = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.TxtRut = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.TxtNombreCorto = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.LabelX1 = New DevComponents.DotNetBar.LabelX
-        Me.LabelX4 = New DevComponents.DotNetBar.LabelX
-        Me.TxtRazonSocial = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.LabelX16 = New DevComponents.DotNetBar.LabelX
-        Me.TxtDireccion = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.LabelX14 = New DevComponents.DotNetBar.LabelX
-        Me.LabelX6 = New DevComponents.DotNetBar.LabelX
-        Me.ReflectionImage1 = New DevComponents.DotNetBar.Controls.ReflectionImage
-        Me.TxtBaseDeDatosBakApp = New System.Windows.Forms.TextBox
-        Me.Label6 = New System.Windows.Forms.Label
+        Me.TxtBaseDeDatos = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.TxtClave = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.TxtUsuario = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.TxtPuerto = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TxtServidor = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Bar1 = New DevComponents.DotNetBar.Bar()
+        Me.BtnConectar = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtnGrabar = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtnLimpiar = New DevComponents.DotNetBar.ButtonItem()
+        Me.GrupoConexion = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.TxtBaseDeDatosBakApp = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.TxtTelefonos = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtCiudad = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtPais = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtGiro = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TxtRut = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TxtNombreCorto = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtRazonSocial = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX16 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtDireccion = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX14 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
+        Me.ReflectionImage1 = New DevComponents.DotNetBar.Controls.ReflectionImage()
         CType(Me.Bar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GrupoConexion.SuspendLayout()
         Me.GroupPanel2.SuspendLayout()
@@ -80,7 +79,7 @@ Partial Class Frm_Conectar
         Me.Label5.ForeColor = System.Drawing.Color.Black
         Me.Label5.Location = New System.Drawing.Point(7, 118)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(79, 13)
+        Me.Label5.Size = New System.Drawing.Size(78, 13)
         Me.Label5.TabIndex = 10
         Me.Label5.Text = "Base de datos"
         '
@@ -169,7 +168,7 @@ Partial Class Frm_Conectar
         Me.Bar1.AntiAlias = True
         Me.Bar1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Bar1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Bar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtnConectar, Me.BtnGrabar, Me.BtnLimpiar, Me.BtnxSalir})
+        Me.Bar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtnConectar, Me.BtnGrabar, Me.BtnLimpiar})
         Me.Bar1.Location = New System.Drawing.Point(0, 542)
         Me.Bar1.Name = "Bar1"
         Me.Bar1.Size = New System.Drawing.Size(534, 41)
@@ -201,15 +200,6 @@ Partial Class Frm_Conectar
         Me.BtnLimpiar.Image = CType(resources.GetObject("BtnLimpiar.Image"), System.Drawing.Image)
         Me.BtnLimpiar.Name = "BtnLimpiar"
         Me.BtnLimpiar.Tooltip = "Limpiar"
-        '
-        'BtnxSalir
-        '
-        Me.BtnxSalir.ForeColor = System.Drawing.Color.Black
-        Me.BtnxSalir.Image = CType(resources.GetObject("BtnxSalir.Image"), System.Drawing.Image)
-        Me.BtnxSalir.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far
-        Me.BtnxSalir.Name = "BtnxSalir"
-        Me.BtnxSalir.Text = "Cancelar y cerrar"
-        Me.BtnxSalir.Tooltip = "Cancelar y cerrar"
         '
         'GrupoConexion
         '
@@ -261,6 +251,26 @@ Partial Class Frm_Conectar
         Me.GrupoConexion.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GrupoConexion.TabIndex = 37
         Me.GrupoConexion.Text = "Datos de conexión"
+        '
+        'TxtBaseDeDatosBakApp
+        '
+        Me.TxtBaseDeDatosBakApp.BackColor = System.Drawing.Color.White
+        Me.TxtBaseDeDatosBakApp.ForeColor = System.Drawing.Color.Black
+        Me.TxtBaseDeDatosBakApp.Location = New System.Drawing.Point(118, 164)
+        Me.TxtBaseDeDatosBakApp.Name = "TxtBaseDeDatosBakApp"
+        Me.TxtBaseDeDatosBakApp.Size = New System.Drawing.Size(207, 22)
+        Me.TxtBaseDeDatosBakApp.TabIndex = 11
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.BackColor = System.Drawing.Color.Transparent
+        Me.Label6.ForeColor = System.Drawing.Color.Black
+        Me.Label6.Location = New System.Drawing.Point(7, 167)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(72, 13)
+        Me.Label6.TabIndex = 12
+        Me.Label6.Text = "Base BakApp"
         '
         'GroupPanel2
         '
@@ -612,32 +622,11 @@ Partial Class Frm_Conectar
         Me.ReflectionImage1.Size = New System.Drawing.Size(167, 179)
         Me.ReflectionImage1.TabIndex = 39
         '
-        'TxtBaseDeDatosBakApp
-        '
-        Me.TxtBaseDeDatosBakApp.BackColor = System.Drawing.Color.White
-        Me.TxtBaseDeDatosBakApp.ForeColor = System.Drawing.Color.Black
-        Me.TxtBaseDeDatosBakApp.Location = New System.Drawing.Point(118, 164)
-        Me.TxtBaseDeDatosBakApp.Name = "TxtBaseDeDatosBakApp"
-        Me.TxtBaseDeDatosBakApp.Size = New System.Drawing.Size(207, 22)
-        Me.TxtBaseDeDatosBakApp.TabIndex = 11
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.BackColor = System.Drawing.Color.Transparent
-        Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(7, 167)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(74, 13)
-        Me.Label6.TabIndex = 12
-        Me.Label6.Text = "Base BakApp"
-        '
         'Frm_Conectar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(534, 583)
-        Me.ControlBox = False
         Me.Controls.Add(Me.ReflectionImage1)
         Me.Controls.Add(Me.GroupPanel2)
         Me.Controls.Add(Me.GrupoConexion)
@@ -646,6 +635,8 @@ Partial Class Frm_Conectar
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "Frm_Conectar"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -670,7 +661,6 @@ Partial Class Frm_Conectar
     Friend WithEvents Bar1 As DevComponents.DotNetBar.Bar
     Friend WithEvents BtnConectar As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents BtnGrabar As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents BtnxSalir As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents GrupoConexion As DevComponents.DotNetBar.Controls.GroupPanel
     Friend WithEvents GroupPanel2 As DevComponents.DotNetBar.Controls.GroupPanel
     Friend WithEvents TxtGiro As DevComponents.DotNetBar.Controls.TextBoxX

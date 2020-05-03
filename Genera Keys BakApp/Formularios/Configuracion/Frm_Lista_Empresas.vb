@@ -77,10 +77,11 @@ Public Class Frm_Lista_Empresas
     End Sub
 
     Private Sub BtnAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnAgregar.Click
+
         Dim Fm As New Frm_Conectar
         Fm.ShowDialog(Me)
-
-        If Fm._Grabar Then Sb_Actualizar_Grilla()
+        If Fm.Grabar Then Sb_Actualizar_Grilla()
+        Fm.Dispose()
 
     End Sub
 
@@ -96,8 +97,6 @@ Public Class Frm_Lista_Empresas
         Dim _RazonFila As String = _Fila.Cells("Razon").Value
 
         Consulta_sql = "Select * From Zw_Empresas Where Rut = '" & _RutFila & "'"
-
-        'Dim _TblEmpresa As DataTable = _SQLite.Fx_Get_DataRow(Consulta_sql) ' get_Tablas(Consulta_sql, cn3, 4, _CadenaLocal)
         Dim _FilaR As DataRow = _SQLite.Fx_Get_DataRow(Consulta_sql) '_TblEmpresa.Rows(0)
 
         Dim Fm As New Frm_Genera_Key_Empresa

@@ -3,8 +3,34 @@ Imports System.Data.SqlClient
 
 Public Class Frm_Conectar
 
-    Public _Grabar As Boolean
+    Dim _Grabar As Boolean
+    Dim _Sql As Class_SQL
+    Dim _Cadena_Conexion_Base_Cliente As String
 
+    Dim _SQLite As Class_SQLite
+    Dim _Base_SQlLite_Local As String = Application.StartupPath & "\Db\" & "Genera_Keys_BakApp.db"
+
+    Public Property Grabar As Boolean
+        Get
+            Return _Grabar
+        End Get
+        Set(value As Boolean)
+            _Grabar = value
+        End Set
+    End Property
+    Public Sub New()
+
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        _SQLite = New Class_SQLite(_Base_SQlLite_Local)
+
+    End Sub
+
+    Private Sub Frm_Conectar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.ActiveControl = TxtServidor
+    End Sub
     Private Sub BtnConectar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnConectar.Click
 
         If Fx_Conectar() Then
@@ -14,10 +40,9 @@ Public Class Frm_Conectar
 
     End Sub
 
-
     Function Fx_Conectar() As Boolean
 
-        Dim Cadena = "data source = #SV#; initial catalog = #BD#; user id = #US#; password = #PW#"
+        _Cadena_Conexion_Base_Cliente = "data source = #SV#; initial catalog = #BD#; user id = #US#; password = #PW#"
 
         Dim SV, PT, BD, US, PW As String
 
@@ -31,59 +56,41 @@ Public Class Frm_Conectar
             SV = Trim(SV & "," & PT)
         End If
 
-        Cadena = Replace(Cadena, "#SV#", SV)
-        Cadena = Replace(Cadena, "#BD#", BD)
-        Cadena = Replace(Cadena, "#US#", US)
-        Cadena = Replace(Cadena, "#PW#", PW)
+        _Cadena_Conexion_Base_Cliente = Replace(_Cadena_Conexion_Base_Cliente, "#SV#", SV)
+        _Cadena_Conexion_Base_Cliente = Replace(_Cadena_Conexion_Base_Cliente, "#BD#", BD)
+        _Cadena_Conexion_Base_Cliente = Replace(_Cadena_Conexion_Base_Cliente, "#US#", US)
+        _Cadena_Conexion_Base_Cliente = Replace(_Cadena_Conexion_Base_Cliente, "#PW#", PW)
 
-        Dim SqlCn As New SQL_Server
-
-        Dim ConexionSQL As SqlConnection
-        ConexionSQL = cn1
-
-        If ConexionSQL.State = ConnectionState.Open Then
-            ' Cerrar conexion
-            ConexionSQL.Close()
-        End If
-
-        ConexionSQL.ConnectionString = Cadena
-        Cadena_ConexionSQL_Server = Cadena
+        Dim _Sql As New Class_SQL(_Cadena_Conexion_Base_Cliente)
 
         Try
-            ConexionSQL.Open()
 
-            Consulta_sql = "SELECT TOP 1 RAZON,RUT,NCORTO,DIRECCION,CIUDAD,PAIS,TELEFONOS,GIRO FROM CONFIGP"
+            Consulta_sql = "Select Top 1 * From CONFIGP Where EMPRESA = '01'"
+            Dim _Row_Config As DataRow = _Sql.Fx_Get_DataRow(Consulta_sql)
 
-            Dim Tabla = get_Tablas(Consulta_sql, cn1)
+            TxtRut.Text = _Row_Config.Item("RUT").ToString.Trim
+            TxtRazonSocial.Text = _Row_Config.Item("RAZON").ToString.Trim
+            TxtNombreCorto.Text = _Row_Config.Item("NCORTO").ToString.Trim
 
-            Dim Fila As DataRow
-            Fila = Tabla.Rows(0)
+            TxtDireccion.Text = _Row_Config.Item("DIRECCION").ToString.Trim
+            TxtGiro.Text = _Row_Config.Item("GIRO").ToString.Trim
+            TxtPais.Text = _Row_Config.Item("PAIS").ToString.Trim
+            TxtCiudad.Text = _Row_Config.Item("CIUDAD").ToString.Trim
+            TxtTelefonos.Text = _Row_Config.Item("TELEFONOS").ToString.Trim
 
-            TxtRut.Text = Trim(Fila.Item("RUT"))
-            TxtRazonSocial.Text = Trim(Fila.Item("RAZON"))
-            TxtNombreCorto.Text = Trim(Fila.Item("NCORTO"))
+            Dim Rt = Split(_Row_Config.Item("RUT").ToString.Trim, "-")
 
-            TxtDireccion.Text = Trim(Fila.Item("DIRECCION"))
-            TxtGiro.Text = Trim(Fila.Item("GIRO"))
-            TxtPais.Text = Trim(Fila.Item("PAIS"))
-            TxtCiudad.Text = Trim(Fila.Item("CIUDAD"))
-            TxtTelefonos.Text = Trim(Fila.Item("TELEFONOS"))
-
-            Dim Rt = Split(Trim(Fila.Item("RUT")), "-")
-
-            Dim info As New TaskDialogInfo("Conectar con base de datos", _
-                                         eTaskDialogIcon.ShieldOk, _
-                                         "CONEXIÓN EXITOSA", _
-                                         "la conexión con la base de datos resulto exitosa." & vbCrLf & vbCrLf & _
-                                         "Rut: " & FormatNumber(Rt(0), 0) & "-" & Rt(1) & vbCrLf & _
-                                         "Empresa: " & Trim(Fila.Item("RAZON")), _
+            Dim info As New TaskDialogInfo("Conectar con base de datos",
+                                         eTaskDialogIcon.ShieldOk,
+                                         "CONEXIÓN EXITOSA",
+                                         "la conexión con la base de datos resulto exitosa." & vbCrLf & vbCrLf &
+                                         "Rut: " & FormatNumber(Rt(0), 0) & "-" & Rt(1) & vbCrLf &
+                                         "Empresa: " & TxtRazonSocial.Text,
                                          eTaskDialogButton.Ok _
                                          , eTaskDialogBackgroundColor.Blue, Nothing, Nothing, Nothing, Nothing, Nothing)
             Dim result As eTaskDialogResult = TaskDialog.Show(info)
 
-
             Return True
-
 
         Catch ex As Exception
             MsgBox("No es posible conectar con la base de datos", MsgBoxStyle.Critical, "Conexión")
@@ -95,23 +102,27 @@ Public Class Frm_Conectar
 
     Private Sub BtnGrabar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnGrabar.Click
 
-        Dim _Reg As Boolean = CBool(Cuenta_registros("Zw_Empresas", "Rut = '" & TxtRut.Text & "'", 4, _CadenaLocal))
+        Dim _Sql As New Class_SQL(_Cadena_Conexion_Base_Cliente)
 
-        If _Reg Then
+        Consulta_sql = "Select * From Zw_Empresas Where Rut = '" & TxtRut.Text & "'"
 
-            If MessageBoxEx.Show(Me, "¿Desea actualizar los datos?", "Esta empresa ya esta registrada", _
+        Dim _Row_Empresa As DataRow = _SQLite.Fx_Get_DataRow(Consulta_sql)
+
+        If Not IsNothing(_Row_Empresa) Then
+
+            If MessageBoxEx.Show(Me, "¿Desea actualizar los datos?", "Esta empresa ya esta registrada",
                                  MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-                'Servidor, Puerto, Usuario, Clave, BaseDeDatos
-                Consulta_sql = "Update Zw_Empresas Set Servidor = '" & TxtServidor.Text & "'," & _
-                                                      "Puerto = '" & TxtPuerto.Text & "'," & _
-                                                      "Usuario = '" & TxtUsuario.Text & "'," & _
-                                                      "Clave = '" & TxtClave.Text & "'," & _
-                                                      "BaseDeDatos = '" & TxtBaseDeDatos.Text & "'" & vbCrLf & _
+
+                Consulta_sql = "Update Zw_Empresas Set Servidor = '" & TxtServidor.Text & "'," &
+                                                      "Puerto = '" & TxtPuerto.Text & "'," &
+                                                      "Usuario = '" & TxtUsuario.Text & "'," &
+                                                      "Clave = '" & TxtClave.Text & "'," &
+                                                      "BaseDeDatos = '" & TxtBaseDeDatos.Text & "'" & vbCrLf &
                                                       "Where Rut = '" & TxtRut.Text & "'"
 
-                If Ej_consulta_IDU(Consulta_sql, cn3, 4, _CadenaLocal) Then
+                If _SQLite.Ej_consulta_IDU(Consulta_sql) Then
 
-                    MessageBoxEx.Show(Me, "Datos actualizados correctamente", "Grabar empresa", _
+                    MessageBoxEx.Show(Me, "Datos actualizados correctamente", "Grabar empresa",
                                       MessageBoxButtons.OK, MessageBoxIcon.Information)
                     _Grabar = True
                     Me.Close()
@@ -119,24 +130,28 @@ Public Class Frm_Conectar
                 End If
 
             Else
+
                 Return
+
             End If
 
         Else
 
-            Consulta_sql = "Insert Into Zw_Empresas (Rut,Razon,NombreCorto,Direccion,Giro,Ciudad,Pais,Telefonos," & _
-                                        "Servidor,Puerto,Usuario,Clave,BaseDeDatos,Cant_licencias,BaseDeDatos_BakApp) Values " & vbCrLf & _
-                                        "('" & TxtRut.Text & "','" & TxtRazonSocial.Text & "','" & TxtNombreCorto.Text & _
-                                        "','" & TxtDireccion.Text & "','" & TxtGiro.Text & "','" & TxtCiudad.Text & _
-                                        "','" & TxtPais.Text & "','" & TxtTelefonos.Text & "','" & TxtServidor.Text & _
-                                        "','" & TxtPuerto.Text & "','" & TxtUsuario.Text & "','" & TxtClave.Text & _
-                                        "','" & TxtBaseDeDatos.Text & "',0,'" & TxtBaseDeDatosBakApp.Text & "')"
+            Consulta_sql = "Insert Into Zw_Empresas (Rut,Razon,NombreCorto,Direccion,Giro,Ciudad,Pais,Telefonos," &
+                           "Servidor,Puerto,Usuario,Clave,BaseDeDatos,Cant_licencias,BaseDeDatos_BakApp) Values " & vbCrLf &
+                           "('" & TxtRut.Text & "','" & TxtRazonSocial.Text & "','" & TxtNombreCorto.Text &
+                           "','" & TxtDireccion.Text & "','" & TxtGiro.Text & "','" & TxtCiudad.Text &
+                           "','" & TxtPais.Text & "','" & TxtTelefonos.Text & "','" & TxtServidor.Text &
+                           "','" & TxtPuerto.Text & "','" & TxtUsuario.Text & "','" & TxtClave.Text &
+                           "','" & TxtBaseDeDatos.Text & "',0,'" & TxtBaseDeDatosBakApp.Text & "')"
 
-            If Ej_consulta_IDU(Consulta_sql, cn3, 4, _CadenaLocal) Then
-                MessageBoxEx.Show(Me, "Datos insertados correctamente", "Grabar empresa", _
+            If _SQLite.Ej_consulta_IDU(Consulta_sql) Then
+
+                MessageBoxEx.Show(Me, "Datos insertados correctamente", "Grabar empresa",
                                           MessageBoxButtons.OK, MessageBoxIcon.Information)
                 _Grabar = True
                 Me.Close()
+
             End If
 
         End If
@@ -164,8 +179,5 @@ Public Class Frm_Conectar
 
     End Sub
 
-    Private Sub BtnxSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnxSalir.Click
-        _Grabar = False
-        Me.Close()
-    End Sub
+
 End Class

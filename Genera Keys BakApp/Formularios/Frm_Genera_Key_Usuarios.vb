@@ -49,52 +49,38 @@ Public Class Frm_Genera_Key_Usuarios
 
         Dim _NombreEquipo As String = Trim(TxtNombreEstacion.Text)
 
-        Dim _Class_SQL_Base_Cliente As New Class_SQL(_Cadena_Conexion_Base_Cliente)
-        'Dim _Class_SQL_Mibase As New Class_SQL(_CadenaLocal)
+        Dim _Sql As New Class_SQL(_Cadena_Conexion_Base_Cliente)
 
-        Dim _Reg As Boolean = CBool(Cuenta_registros("Zw_PcXEmpresa",
-                    "Rut = '" & Trim(TxtRut.Text) & "' And Estacion_trabajo = '" & Trim(TxtNombreEstacion.Text) & "'",
-                    4, _CadenaLocal))
+        Consulta_sql = "Select * From Zw_PcXEmpresa" & Space(1) &
+                        "Where Rut = '" & Trim(TxtRut.Text) & "' And Estacion_trabajo = '" & Trim(TxtNombreEstacion.Text) & "'"
+        Dim _RegCliente As DataRow = _SQLite.Fx_Get_DataRow(Consulta_sql)
 
-        '_Reg = _SQLite.c
-
-
-        If _Reg Then
+        If Not IsNothing(_RegCliente) Then
 
             MessageBoxEx.Show(Me, "Esta estación de trabajo ya se encuentra registrada en el sistema",
                                  "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 
-            Consulta_sql = "Select Top 1 * From " & _Base_BakApp & ".dbo.Zw_EstacionesBkp" & vbCrLf &
-                           "Where NombreEquipo = '" & _NombreEquipo & "'"
+            If MessageBoxEx.Show(Me, "¿Desea registrar en la base del cliente?",
+                                 "Registrar en base del cliente",
+                                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
 
-            Dim _TblRegCliente As DataTable = _Class_SQL_Base_Cliente.Fx_Get_Tablas(Consulta_sql)
+                Consulta_sql = "Insert Into " & _Base_BakApp & ".dbo.Zw_EstacionesBkp (NombreEquipo,TipoEstacion,KeyReg) VALUES" & vbCrLf &
+                               "('" & _NombreEquipo & "','N','" & Trim(TxtKeyLicencia.Text) & "')"
 
-            If Not CBool(_TblRegCliente.Rows.Count) Then
-
-                If MessageBoxEx.Show(Me, "¿Desea registrar en la base del cliente?",
-                                     "Registrar en base del cliente",
-                                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-
-                    Consulta_sql = "INSERT INTO " & _Base_BakApp & ".dbo.Zw_EstacionesBkp (NombreEquipo,TipoEstacion,KeyReg) VALUES" & vbCrLf &
-                                   "('" & _NombreEquipo & "','N','" & Trim(TxtKeyLicencia.Text) & "')"
-
-                    If _Class_SQL_Base_Cliente.Ej_consulta_IDU(Consulta_sql) Then
-                        MessageBoxEx.Show(Me, "Estación de trabajo registrada correctamente en la base del cliente", "Grabar equipo por empresa",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    End If
-
+                If _Sql.Ej_consulta_IDU(Consulta_sql) Then
+                    MessageBoxEx.Show(Me, "Estación de trabajo registrada correctamente en la base del cliente", "Grabar equipo por empresa",
+                             MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
+
             End If
-
-
 
         Else
 
             Consulta_sql = "Insert Into Zw_PcXEmpresa (Rut,Estacion_trabajo,Llave,Fecha_Activacion) Values " & vbCrLf &
                            "('" & Trim(TxtRut.Text) & "','" & _NombreEquipo &
-                           "','" & Trim(TxtKeyLicencia.Text) & "','" & Format(Now.Date, "yyyyMMdd") & "')"
+                           "','" & Trim(TxtKeyLicencia.Text) & "','" & Format(Now.Date, "dd-MM-yyyy") & "')"
 
-            If _SQLite.Ej_consulta_IDU(Consulta_sql) Then ' _Class_SQL_Mibase.Ej_consulta_IDU(Consulta_sql) Then
+            If _SQLite.Ej_consulta_IDU(Consulta_sql) Then
 
                 If MessageBoxEx.Show(Me, "Estación de trabajo registrada correctamente" & vbCrLf &
                                      "¿Desea registrarla inmediatamente en el equipo del cliente?",
@@ -104,7 +90,7 @@ Public Class Frm_Genera_Key_Usuarios
                     Consulta_sql = "Insert Into [" & _Base_BakApp & "].dbo.Zw_EstacionesBkp (NombreEquipo,TipoEstacion,KeyReg) Values" & vbCrLf &
                                    "('" & _NombreEquipo & "','N','" & Trim(TxtKeyLicencia.Text) & "')"
 
-                    If _Class_SQL_Base_Cliente.Ej_consulta_IDU(Consulta_sql) Then
+                    If _Sql.Ej_consulta_IDU(Consulta_sql) Then
                         MessageBoxEx.Show(Me, "Estación de trabajo registrada correctamente en la base del cliente", "Grabar equipo por empresa",
                                  MessageBoxButtons.OK, MessageBoxIcon.Information)
                     End If

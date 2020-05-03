@@ -68,7 +68,13 @@ Public Class Frm_Genera_Key_Empresa
         '        Tambien puedes probar con
         'DateTime.Parse(cadenastring)
 
-        DtpFechaExpiracion.Value = Convert.ToDateTime(NuloPorNro(_Row_Empresa.Item("Fecha_caduca"), Now.Date))
+        Dim _Fecha_caduca As String = NuloPorNro(_Row_Empresa.Item("Fecha_caduca"), Now.Date)
+
+        If String.IsNullOrEmpty(_Fecha_caduca) Then
+            _Fecha_caduca = Now.Date
+        End If
+
+        DtpFechaExpiracion.Value = Convert.ToDateTime(_Fecha_caduca)
 
         TxtPais.Text = _Row_Empresa.Item("Pais")
         TxtCiudad.Text = _Row_Empresa.Item("Ciudad")
@@ -110,8 +116,6 @@ Public Class Frm_Genera_Key_Empresa
     Private Sub BtnEstaciones_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnEstaciones.Click
 
         Dim Fm As New Frm_Lista_UserXEmpresas(_Row_Empresa, _Cadena_Base, _Base_BakApp)
-        'Fm._NombreEmpresa = TxtRazonSocial.Text
-        'Fm._RutEmpresa = TxtRut.Text
         Fm.Text = TxtRut.Text & ", " & TxtRazonSocial.Text
         Fm.ShowDialog(Me)
         Fm.Dispose()
@@ -202,8 +206,6 @@ Public Class Frm_Genera_Key_Empresa
 
         If _SQLite.Ej_consulta_IDU(Consulta_sql) Then
 
-            'Ej_consulta_IDU(Consulta_sql, cn3, 4, _CadenaLocal)
-
             MessageBoxEx.Show(Me, "Estaciones: " & TxtCant_licencias.Text & vbCrLf & vbCrLf &
                              "Valida hasta el " & FormatDateTime(DtpFechaExpiracion.Value, DateFormat.LongDate) & vbCrLf & vbCrLf &
                              "Días que faltan para que expire: " & FormatNumber(_DiasExpira, 0),
@@ -211,6 +213,8 @@ Public Class Frm_Genera_Key_Empresa
 
             If MessageBoxEx.Show(Me, "¿Desea actualizar la licencia remotamente al cliente?", "Actualizar licencia remota",
                              MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+
+                Dim _Sql As New Class_SQL(_Cadena_Base)
 
                 Consulta_sql = "Delete [" & _Base_BakApp & "].dbo.Zw_Licencia" & vbCrLf &
                       "Insert Into [" & _Base_BakApp & "].dbo.Zw_Licencia (Rut,Razon,NombreCorto,Direccion,Giro,Ciudad,Pais,Telefonos," &
@@ -222,16 +226,17 @@ Public Class Frm_Genera_Key_Empresa
                       ",'" & Txt_Llave1.Text & "','" & Txt_Llave2.Text &
                       "','" & Txt_Llave3.Text & "','" & Txt_Llave4.Text & "',0)"
 
-                If Ej_consulta_IDU(Consulta_sql, cn1, 4, _Cadena_Base) Then
+                If _Sql.Ej_consulta_IDU(Consulta_sql) Then
 
                     MessageBoxEx.Show(Me, "Licencia Activa corresctamente en la base del cliente", "Activar licencia",
                                   MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    _Grabar = True
-                    Me.Close()
 
                 End If
 
             End If
+
+            _Grabar = True
+            Me.Close()
 
         End If
 

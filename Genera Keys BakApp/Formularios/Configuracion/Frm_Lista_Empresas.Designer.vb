@@ -23,13 +23,12 @@ Partial Class Frm_Lista_Empresas
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Lista_Empresas))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.Bar1 = New DevComponents.DotNetBar.Bar
-        Me.BtnAgregar = New DevComponents.DotNetBar.ButtonItem
-        Me.BtnGenerateKey = New DevComponents.DotNetBar.ButtonItem
-        Me.BtnxSalir = New DevComponents.DotNetBar.ButtonItem
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.Grilla = New System.Windows.Forms.DataGridView
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.Bar1 = New DevComponents.DotNetBar.Bar()
+        Me.BtnAgregar = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtnxSalir = New DevComponents.DotNetBar.ButtonItem()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Grilla = New System.Windows.Forms.DataGridView()
         CType(Me.Bar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.Grilla, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -40,7 +39,7 @@ Partial Class Frm_Lista_Empresas
         Me.Bar1.AntiAlias = True
         Me.Bar1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Bar1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Bar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtnAgregar, Me.BtnGenerateKey, Me.BtnxSalir})
+        Me.Bar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtnAgregar, Me.BtnxSalir})
         Me.Bar1.Location = New System.Drawing.Point(0, 511)
         Me.Bar1.Name = "Bar1"
         Me.Bar1.Size = New System.Drawing.Size(672, 41)
@@ -57,14 +56,6 @@ Partial Class Frm_Lista_Empresas
         Me.BtnAgregar.Image = CType(resources.GetObject("BtnAgregar.Image"), System.Drawing.Image)
         Me.BtnAgregar.Name = "BtnAgregar"
         Me.BtnAgregar.Text = "Agregar Empresa"
-        '
-        'BtnGenerateKey
-        '
-        Me.BtnGenerateKey.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.BtnGenerateKey.ForeColor = System.Drawing.Color.Black
-        Me.BtnGenerateKey.Image = CType(resources.GetObject("BtnGenerateKey.Image"), System.Drawing.Image)
-        Me.BtnGenerateKey.Name = "BtnGenerateKey"
-        Me.BtnGenerateKey.Text = "Generar Llave de acceso BakApp"
         '
         'BtnxSalir
         '
@@ -126,7 +117,6 @@ Partial Class Frm_Lista_Empresas
     End Sub
     Friend WithEvents Bar1 As DevComponents.DotNetBar.Bar
     Friend WithEvents BtnAgregar As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents BtnGenerateKey As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents BtnxSalir As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Grilla As System.Windows.Forms.DataGridView
