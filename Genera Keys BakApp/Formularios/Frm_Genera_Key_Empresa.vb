@@ -48,11 +48,6 @@ Public Class Frm_Genera_Key_Empresa
         End Set
     End Property
 
-    Private Sub BtnxSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnxSalir.Click
-        _Grabar = False
-        Me.Close()
-    End Sub
-
     Private Sub Frm_Genera_Key_Empresa_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         ', , , , , , , , Servidor, 
@@ -105,9 +100,9 @@ Public Class Frm_Genera_Key_Empresa
         _Clave = _Row_Empresa.Item("Clave")
         _BaseDeDatos = _Row_Empresa.Item("BaseDeDatos")
 
-        _Cadena_Base = "data source = " & _Servidor & _Puerto & _
-                          "; initial catalog = " & _BaseDeDatos & _
-                          "; user id = " & _Usuario & _
+        _Cadena_Base = "data source = " & _Servidor & _Puerto &
+                          "; initial catalog = " & _BaseDeDatos &
+                          "; user id = " & _Usuario &
                           "; password = " & _Clave & ""
 
 
@@ -164,8 +159,31 @@ Public Class Frm_Genera_Key_Empresa
 
     End Sub
 
-    Function Fx_Genera_Licencia_BakApp(ByVal _RutEmpresa As String, _
-                                       ByVal _FechaCaduca As Date, _
+    Private Sub Btn_Exportar_Licencia_Click(sender As Object, e As EventArgs) Handles Btn_Exportar_Licencia.Click
+
+        Consulta_sql = "Select * From Zw_Empresas Where Rut = '" & TxtRut.Text & "'"
+        Dim _Ds As DataSet = _SQLite.Fx_Get_DataSet(Consulta_sql)
+
+        Dim _Ruta_Licencia = Application.StartupPath & "\Licencias"
+
+        If Not Directory.Exists(_Ruta_Licencia) Then
+            System.IO.Directory.CreateDirectory(_Ruta_Licencia)
+        End If
+
+        _Ruta_Licencia += "\" & Replace(TxtRazonSocial.Text.ToString.Trim, " ", "_")
+
+        _Ds.WriteXml(_Ruta_Licencia, XmlWriteMode.IgnoreSchema)
+
+        ToastNotification.Show(Me, "Archivo Xml guardado correctamente" & Environment.NewLine &
+                               "Ruta esta en el portapapeles", Nothing,
+                                        3 * 1000, eToastGlowColor.Green, eToastPosition.MiddleCenter)
+
+        Clipboard.SetText(_Ruta_Licencia)
+
+    End Sub
+
+    Function Fx_Genera_Licencia_BakApp(ByVal _RutEmpresa As String,
+                                       ByVal _FechaCaduca As Date,
                                        ByVal _CantLicencias As Integer, ByVal _Palabra_X As String) As String()
 
         Dim _Llave1, _Llave2, _Llave3, _Llave4 As String
@@ -242,8 +260,6 @@ Public Class Frm_Genera_Key_Empresa
 
     End Sub
 
-
-
     Private Sub BtnCambiarLicencia_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnCambiarLicencia.Click
 
         TxtCant_licencias.Enabled = True
@@ -267,4 +283,5 @@ Public Class Frm_Genera_Key_Empresa
         Fm.ShowDialog(Me)
 
     End Sub
+
 End Class

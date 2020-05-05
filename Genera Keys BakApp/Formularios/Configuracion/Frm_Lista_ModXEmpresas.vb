@@ -51,10 +51,6 @@ Public Class Frm_Lista_ModXEmpresas
 
     End Sub
 
-    Private Sub BtnxSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnxSalir.Click
-        Me.Close()
-    End Sub
-
     Private Sub Frm_Lista_ModXEmpresas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Sb_Actualizar_Grilla()
     End Sub

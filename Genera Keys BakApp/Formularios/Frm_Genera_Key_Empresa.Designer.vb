@@ -23,42 +23,42 @@ Partial Class Frm_Genera_Key_Empresa
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Genera_Key_Empresa))
-        Me.LabelX2 = New DevComponents.DotNetBar.LabelX
-        Me.TxtCant_licencias = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.LabelX3 = New DevComponents.DotNetBar.LabelX
-        Me.Txt_Llave1 = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.Bar1 = New DevComponents.DotNetBar.Bar
-        Me.BtnGrabar = New DevComponents.DotNetBar.ButtonItem
-        Me.BtnGenerarKey = New DevComponents.DotNetBar.ButtonItem
-        Me.BtnModalidades = New DevComponents.DotNetBar.ButtonItem
-        Me.BtnEstaciones = New DevComponents.DotNetBar.ButtonItem
-        Me.BtnxSalir = New DevComponents.DotNetBar.ButtonItem
-        Me.LblFechaExpiracion = New DevComponents.DotNetBar.LabelX
-        Me.DtpFechaExpiracion = New DevComponents.Editors.DateTimeAdv.DateTimeInput
-        Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel
-        Me.TxtTelefonos = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.LabelX7 = New DevComponents.DotNetBar.LabelX
-        Me.TxtCiudad = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.LabelX8 = New DevComponents.DotNetBar.LabelX
-        Me.TxtPais = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.LabelX9 = New DevComponents.DotNetBar.LabelX
-        Me.TxtGiro = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.TxtRut = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.TxtNombreCorto = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.LabelX10 = New DevComponents.DotNetBar.LabelX
-        Me.LabelX11 = New DevComponents.DotNetBar.LabelX
-        Me.TxtRazonSocial = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.LabelX12 = New DevComponents.DotNetBar.LabelX
-        Me.TxtDireccion = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.LabelX13 = New DevComponents.DotNetBar.LabelX
-        Me.LabelX15 = New DevComponents.DotNetBar.LabelX
-        Me.LabelX1 = New DevComponents.DotNetBar.LabelX
-        Me.Txt_Llave2 = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.BtnCambiarLicencia = New DevComponents.DotNetBar.ButtonX
-        Me.LabelX4 = New DevComponents.DotNetBar.LabelX
-        Me.Txt_Llave4 = New DevComponents.DotNetBar.Controls.TextBoxX
-        Me.LabelX5 = New DevComponents.DotNetBar.LabelX
-        Me.Txt_Llave3 = New DevComponents.DotNetBar.Controls.TextBoxX
+        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtCant_licencias = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
+        Me.Txt_Llave1 = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.Bar1 = New DevComponents.DotNetBar.Bar()
+        Me.BtnGrabar = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtnGenerarKey = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtnModalidades = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtnEstaciones = New DevComponents.DotNetBar.ButtonItem()
+        Me.LblFechaExpiracion = New DevComponents.DotNetBar.LabelX()
+        Me.DtpFechaExpiracion = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
+        Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.TxtTelefonos = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX7 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtCiudad = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX8 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtPais = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX9 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtGiro = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TxtRut = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TxtNombreCorto = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX10 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX11 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtRazonSocial = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX12 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtDireccion = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX13 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX15 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
+        Me.Txt_Llave2 = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.BtnCambiarLicencia = New DevComponents.DotNetBar.ButtonX()
+        Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
+        Me.Txt_Llave4 = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
+        Me.Txt_Llave3 = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.Btn_Exportar_Licencia = New DevComponents.DotNetBar.ButtonItem()
         CType(Me.Bar1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DtpFechaExpiracion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanel2.SuspendLayout()
@@ -140,7 +140,7 @@ Partial Class Frm_Genera_Key_Empresa
         Me.Bar1.AntiAlias = True
         Me.Bar1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Bar1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Bar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtnGrabar, Me.BtnGenerarKey, Me.BtnModalidades, Me.BtnEstaciones, Me.BtnxSalir})
+        Me.Bar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtnGrabar, Me.BtnGenerarKey, Me.BtnModalidades, Me.BtnEstaciones, Me.Btn_Exportar_Licencia})
         Me.Bar1.Location = New System.Drawing.Point(0, 519)
         Me.Bar1.Name = "Bar1"
         Me.Bar1.Size = New System.Drawing.Size(530, 41)
@@ -181,14 +181,6 @@ Partial Class Frm_Genera_Key_Empresa
         Me.BtnEstaciones.Image = CType(resources.GetObject("BtnEstaciones.Image"), System.Drawing.Image)
         Me.BtnEstaciones.Name = "BtnEstaciones"
         Me.BtnEstaciones.Tooltip = "Grabar"
-        '
-        'BtnxSalir
-        '
-        Me.BtnxSalir.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.BtnxSalir.ForeColor = System.Drawing.Color.Black
-        Me.BtnxSalir.Image = CType(resources.GetObject("BtnxSalir.Image"), System.Drawing.Image)
-        Me.BtnxSalir.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far
-        Me.BtnxSalir.Name = "BtnxSalir"
         '
         'LblFechaExpiracion
         '
@@ -723,12 +715,19 @@ Partial Class Frm_Genera_Key_Empresa
         Me.Txt_Llave3.TabStop = False
         Me.Txt_Llave3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'Btn_Exportar_Licencia
+        '
+        Me.Btn_Exportar_Licencia.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.Btn_Exportar_Licencia.ForeColor = System.Drawing.Color.Black
+        Me.Btn_Exportar_Licencia.Image = CType(resources.GetObject("Btn_Exportar_Licencia.Image"), System.Drawing.Image)
+        Me.Btn_Exportar_Licencia.Name = "Btn_Exportar_Licencia"
+        Me.Btn_Exportar_Licencia.Text = "Exportar licencia .txt"
+        '
         'Frm_Genera_Key_Empresa
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(530, 560)
-        Me.ControlBox = False
         Me.Controls.Add(Me.LabelX4)
         Me.Controls.Add(Me.Txt_Llave4)
         Me.Controls.Add(Me.LabelX5)
@@ -742,8 +741,9 @@ Partial Class Frm_Genera_Key_Empresa
         Me.Controls.Add(Me.Bar1)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ForeColor = System.Drawing.Color.Black
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "Frm_Genera_Key_Empresa"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -761,7 +761,6 @@ Partial Class Frm_Genera_Key_Empresa
     Friend WithEvents Bar1 As DevComponents.DotNetBar.Bar
     Friend WithEvents BtnGenerarKey As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents BtnGrabar As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents BtnxSalir As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents BtnModalidades As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents BtnEstaciones As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents LblFechaExpiracion As DevComponents.DotNetBar.LabelX
@@ -790,4 +789,5 @@ Partial Class Frm_Genera_Key_Empresa
     Public WithEvents Txt_Llave4 As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
     Public WithEvents Txt_Llave3 As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents Btn_Exportar_Licencia As DevComponents.DotNetBar.ButtonItem
 End Class

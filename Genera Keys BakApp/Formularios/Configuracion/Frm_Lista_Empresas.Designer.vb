@@ -26,7 +26,6 @@ Partial Class Frm_Lista_Empresas
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Bar1 = New DevComponents.DotNetBar.Bar()
         Me.BtnAgregar = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtnxSalir = New DevComponents.DotNetBar.ButtonItem()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Grilla = New System.Windows.Forms.DataGridView()
         CType(Me.Bar1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -39,7 +38,7 @@ Partial Class Frm_Lista_Empresas
         Me.Bar1.AntiAlias = True
         Me.Bar1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Bar1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Bar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtnAgregar, Me.BtnxSalir})
+        Me.Bar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtnAgregar})
         Me.Bar1.Location = New System.Drawing.Point(0, 511)
         Me.Bar1.Name = "Bar1"
         Me.Bar1.Size = New System.Drawing.Size(672, 41)
@@ -56,14 +55,6 @@ Partial Class Frm_Lista_Empresas
         Me.BtnAgregar.Image = CType(resources.GetObject("BtnAgregar.Image"), System.Drawing.Image)
         Me.BtnAgregar.Name = "BtnAgregar"
         Me.BtnAgregar.Text = "Agregar Empresa"
-        '
-        'BtnxSalir
-        '
-        Me.BtnxSalir.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.BtnxSalir.ForeColor = System.Drawing.Color.Black
-        Me.BtnxSalir.Image = CType(resources.GetObject("BtnxSalir.Image"), System.Drawing.Image)
-        Me.BtnxSalir.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far
-        Me.BtnxSalir.Name = "BtnxSalir"
         '
         'GroupBox1
         '
@@ -100,12 +91,14 @@ Partial Class Frm_Lista_Empresas
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(672, 552)
-        Me.ControlBox = False
         Me.Controls.Add(Me.Bar1)
         Me.Controls.Add(Me.GroupBox1)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "Frm_Lista_Empresas"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Empresas BakApp"
@@ -117,7 +110,6 @@ Partial Class Frm_Lista_Empresas
     End Sub
     Friend WithEvents Bar1 As DevComponents.DotNetBar.Bar
     Friend WithEvents BtnAgregar As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents BtnxSalir As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Grilla As System.Windows.Forms.DataGridView
 End Class

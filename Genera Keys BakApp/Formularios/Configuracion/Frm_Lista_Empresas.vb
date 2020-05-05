@@ -23,13 +23,9 @@ Public Class Frm_Lista_Empresas
 
     Private Sub Frm_Lista_Empresas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-
-        'Conectar_SQL("JALFARO-PC\SQL_2008_R2", "BAKAPP", "BAKAPP", "BAKAPP", cn3)
         Sb_Actualizar_Grilla()
 
-
     End Sub
-
 
     Sub Sb_Actualizar_Grilla()
 
@@ -46,21 +42,19 @@ Public Class Frm_Lista_Empresas
             .Columns("Rut").HeaderText = "Rut"
             .Columns("Rut").Visible = True
 
-            .Columns("Razon").Width = 230
+            .Columns("Razon").Width = 300
             .Columns("Razon").HeaderText = "Empresa"
             .Columns("Razon").Visible = True
 
-            .Columns("Cant_licencias").Width = 50
+            .Columns("Cant_licencias").Width = 60
             .Columns("Cant_licencias").HeaderText = "Licencias"
             .Columns("Cant_licencias").Visible = True
 
             .Columns("Fecha_caduca").Width = 100
-            .Columns("Fecha_caduca").HeaderText = "Nro Licencia"
+            .Columns("Fecha_caduca").HeaderText = "Fecha"
             .Columns("Fecha_caduca").Visible = True
 
         End With
-
-        'MarcarGrilla()
 
     End Sub
 
@@ -85,10 +79,6 @@ Public Class Frm_Lista_Empresas
 
     End Sub
 
-    Private Sub BtnxSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnxSalir.Click
-        End
-    End Sub
-
     Private Sub Grilla_CellDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles Grilla.CellDoubleClick
 
         Dim _Fila As DataGridViewRow = Grilla.Rows(Grilla.CurrentRow.Index)
@@ -97,7 +87,7 @@ Public Class Frm_Lista_Empresas
         Dim _RazonFila As String = _Fila.Cells("Razon").Value
 
         Consulta_sql = "Select * From Zw_Empresas Where Rut = '" & _RutFila & "'"
-        Dim _FilaR As DataRow = _SQLite.Fx_Get_DataRow(Consulta_sql) '_TblEmpresa.Rows(0)
+        Dim _FilaR As DataRow = _SQLite.Fx_Get_DataRow(Consulta_sql)
 
         Dim Fm As New Frm_Genera_Key_Empresa
         Fm.Row_Empresa = _FilaR
