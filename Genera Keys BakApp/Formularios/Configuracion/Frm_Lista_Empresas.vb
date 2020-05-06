@@ -8,8 +8,6 @@ Public Class Frm_Lista_Empresas
     Dim Consulta_sql As String
     Dim _Base_SQlLite_Local As String = Application.StartupPath & "\Db\" & "Genera_Keys_BakApp.db"
 
-    'Dim Directorio As String = Application.StartupPath & "\Data\"
-
     Public Sub New()
 
         ' Esta llamada es exigida por el diseñador.
@@ -23,38 +21,49 @@ Public Class Frm_Lista_Empresas
 
     Private Sub Frm_Lista_Empresas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        Sb_Actualizar_Grilla()
+        Dim _Existe = System.IO.File.Exists(_Base_SQlLite_Local)
+
+        If _Existe Then
+            Sb_Actualizar_Grilla()
+        Else
+            MessageBoxEx.Show(Me, "No existe archivo de base de datos Genera_Keys_BakApp.db en la Ruta:" & vbCrLf &
+                              _Base_SQlLite_Local, "Base de datos no existe", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+        End If
 
     End Sub
 
     Sub Sb_Actualizar_Grilla()
 
-        Consulta_sql = "Select * From Zw_Empresas"
-        Dim _Tbl As DataTable = _SQLite.Fx_Get_Tablas(Consulta_sql)
+        Try
+            Consulta_sql = "Select * From Zw_Empresas"
+            Dim _Tbl As DataTable = _SQLite.Fx_Get_Tablas(Consulta_sql)
 
-        With Grilla
+            With Grilla
 
-            .DataSource = _Tbl 'get_Tablas(_Sql, cn3, 4, _CadenaLocal)
+                .DataSource = _Tbl 'get_Tablas(_Sql, cn3, 4, _CadenaLocal)
 
-            OcultarEncabezadoGrilla(Grilla, True)
+                OcultarEncabezadoGrilla(Grilla, True)
 
-            .Columns("Rut").Width = 80
-            .Columns("Rut").HeaderText = "Rut"
-            .Columns("Rut").Visible = True
+                .Columns("Rut").Width = 80
+                .Columns("Rut").HeaderText = "Rut"
+                .Columns("Rut").Visible = True
 
-            .Columns("Razon").Width = 300
-            .Columns("Razon").HeaderText = "Empresa"
-            .Columns("Razon").Visible = True
+                .Columns("Razon").Width = 380
+                .Columns("Razon").HeaderText = "Empresa"
+                .Columns("Razon").Visible = True
 
-            .Columns("Cant_licencias").Width = 60
-            .Columns("Cant_licencias").HeaderText = "Licencias"
-            .Columns("Cant_licencias").Visible = True
+                .Columns("Cant_licencias").Width = 60
+                .Columns("Cant_licencias").HeaderText = "Licencias"
+                .Columns("Cant_licencias").Visible = True
 
-            .Columns("Fecha_caduca").Width = 100
-            .Columns("Fecha_caduca").HeaderText = "Fecha"
-            .Columns("Fecha_caduca").Visible = True
+                .Columns("Fecha_caduca").Width = 100
+                .Columns("Fecha_caduca").HeaderText = "Fecha"
+                .Columns("Fecha_caduca").Visible = True
 
-        End With
+            End With
+        Catch ex As Exception
+            MessageBoxEx.Show(Me, ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+        End Try
 
     End Sub
 
@@ -71,6 +80,8 @@ Public Class Frm_Lista_Empresas
     End Sub
 
     Private Sub BtnAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnAgregar.Click
+
+        Sb_Actualizar_Grilla()
 
         Dim Fm As New Frm_Conectar
         Fm.ShowDialog(Me)
@@ -98,4 +109,8 @@ Public Class Frm_Lista_Empresas
 
     End Sub
 
+    Private Sub Btn_Raiz_Click(sender As Object, e As EventArgs) Handles Btn_Raiz.Click
+        Dim _Temporales = Application.StartupPath
+        Shell("explorer.exe " & _Temporales, AppWinStyle.NormalFocus)
+    End Sub
 End Class

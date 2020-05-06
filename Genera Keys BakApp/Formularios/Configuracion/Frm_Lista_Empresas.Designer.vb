@@ -23,9 +23,10 @@ Partial Class Frm_Lista_Empresas
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Lista_Empresas))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Bar1 = New DevComponents.DotNetBar.Bar()
         Me.BtnAgregar = New DevComponents.DotNetBar.ButtonItem()
+        Me.Btn_Raiz = New DevComponents.DotNetBar.ButtonItem()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Grilla = New System.Windows.Forms.DataGridView()
         CType(Me.Bar1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -38,8 +39,8 @@ Partial Class Frm_Lista_Empresas
         Me.Bar1.AntiAlias = True
         Me.Bar1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Bar1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Bar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtnAgregar})
-        Me.Bar1.Location = New System.Drawing.Point(0, 511)
+        Me.Bar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtnAgregar, Me.Btn_Raiz})
+        Me.Bar1.Location = New System.Drawing.Point(0, 498)
         Me.Bar1.Name = "Bar1"
         Me.Bar1.Size = New System.Drawing.Size(672, 41)
         Me.Bar1.Stretch = True
@@ -55,6 +56,14 @@ Partial Class Frm_Lista_Empresas
         Me.BtnAgregar.Image = CType(resources.GetObject("BtnAgregar.Image"), System.Drawing.Image)
         Me.BtnAgregar.Name = "BtnAgregar"
         Me.BtnAgregar.Text = "Agregar Empresa"
+        '
+        'Btn_Raiz
+        '
+        Me.Btn_Raiz.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.Btn_Raiz.ForeColor = System.Drawing.Color.Black
+        Me.Btn_Raiz.Image = CType(resources.GetObject("Btn_Raiz.Image"), System.Drawing.Image)
+        Me.Btn_Raiz.Name = "Btn_Raiz"
+        Me.Btn_Raiz.Text = "Raiz del sistema"
         '
         'GroupBox1
         '
@@ -72,8 +81,8 @@ Partial Class Frm_Lista_Empresas
         '
         Me.Grilla.AllowUserToAddRows = False
         Me.Grilla.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.PeachPuff
-        Me.Grilla.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.PeachPuff
+        Me.Grilla.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.Grilla.BackgroundColor = System.Drawing.Color.White
         Me.Grilla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.Grilla.Dock = System.Windows.Forms.DockStyle.Fill
@@ -90,7 +99,7 @@ Partial Class Frm_Lista_Empresas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(672, 552)
+        Me.ClientSize = New System.Drawing.Size(672, 539)
         Me.Controls.Add(Me.Bar1)
         Me.Controls.Add(Me.GroupBox1)
         Me.DoubleBuffered = True
@@ -112,4 +121,5 @@ Partial Class Frm_Lista_Empresas
     Friend WithEvents BtnAgregar As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Grilla As System.Windows.Forms.DataGridView
+    Friend WithEvents Btn_Raiz As DevComponents.DotNetBar.ButtonItem
 End Class
