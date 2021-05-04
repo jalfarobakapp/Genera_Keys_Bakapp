@@ -1,3 +1,4 @@
+Imports System.Globalization
 Imports System.IO
 Imports System.Security
 Imports System.Security.Cryptography
@@ -69,7 +70,11 @@ Public Class Frm_Genera_Key_Empresa
             _Fecha_caduca = Now.Date
         End If
 
-        DtpFechaExpiracion.Value = Convert.ToDateTime(_Fecha_caduca)
+        Dim format() = {"dd/MM/yyyy", "d/M/yyyy", "dd-MM-yyyy"}
+        'Dim expenddt As Date
+        Date.TryParseExact(_Fecha_caduca, format, System.Globalization.DateTimeFormatInfo.InvariantInfo, Globalization.DateTimeStyles.None, DtpFechaExpiracion.Value)
+
+        'DtpFechaExpiracion.Value = Convert.ToDateTime(_F)
 
         TxtPais.Text = _Row_Empresa.Item("Pais")
         TxtCiudad.Text = _Row_Empresa.Item("Ciudad")
