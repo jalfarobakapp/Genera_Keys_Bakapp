@@ -633,6 +633,7 @@ Partial Class Frm_Conectar
         Me.Controls.Add(Me.Bar1)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ForeColor = System.Drawing.Color.Black
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -648,15 +649,10 @@ Partial Class Frm_Conectar
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents TxtBaseDeDatos As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents TxtClave As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents TxtUsuario As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents TxtPuerto As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents TxtServidor As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Bar1 As DevComponents.DotNetBar.Bar
     Friend WithEvents BtnConectar As DevComponents.DotNetBar.ButtonItem
@@ -681,6 +677,11 @@ Partial Class Frm_Conectar
     Friend WithEvents TxtTelefonos As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
     Friend WithEvents BtnLimpiar As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents TxtBaseDeDatosBakApp As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
+    Public WithEvents TxtBaseDeDatos As TextBox
+    Public WithEvents TxtClave As TextBox
+    Public WithEvents TxtUsuario As TextBox
+    Public WithEvents TxtPuerto As TextBox
+    Public WithEvents TxtServidor As TextBox
+    Public WithEvents TxtBaseDeDatosBakApp As TextBox
 End Class

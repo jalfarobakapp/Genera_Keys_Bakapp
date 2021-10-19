@@ -1,6 +1,4 @@
 Imports DevComponents.DotNetBar
-Imports System.IO
-Imports System.Data.SqlClient
 
 Public Class Frm_Lista_Empresas
 

@@ -32,6 +32,7 @@ Partial Class Frm_Genera_Key_Empresa
         Me.BtnGenerarKey = New DevComponents.DotNetBar.ButtonItem()
         Me.BtnModalidades = New DevComponents.DotNetBar.ButtonItem()
         Me.BtnEstaciones = New DevComponents.DotNetBar.ButtonItem()
+        Me.Btn_Exportar_Licencia = New DevComponents.DotNetBar.ButtonItem()
         Me.LblFechaExpiracion = New DevComponents.DotNetBar.LabelX()
         Me.DtpFechaExpiracion = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
@@ -58,7 +59,7 @@ Partial Class Frm_Genera_Key_Empresa
         Me.Txt_Llave4 = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
         Me.Txt_Llave3 = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.Btn_Exportar_Licencia = New DevComponents.DotNetBar.ButtonItem()
+        Me.Btn_Editar_Conexion = New DevComponents.DotNetBar.ButtonItem()
         CType(Me.Bar1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DtpFechaExpiracion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanel2.SuspendLayout()
@@ -140,7 +141,7 @@ Partial Class Frm_Genera_Key_Empresa
         Me.Bar1.AntiAlias = True
         Me.Bar1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Bar1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Bar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtnGrabar, Me.BtnGenerarKey, Me.BtnModalidades, Me.BtnEstaciones, Me.Btn_Exportar_Licencia})
+        Me.Bar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtnGrabar, Me.BtnGenerarKey, Me.BtnModalidades, Me.BtnEstaciones, Me.Btn_Exportar_Licencia, Me.Btn_Editar_Conexion})
         Me.Bar1.Location = New System.Drawing.Point(0, 519)
         Me.Bar1.Name = "Bar1"
         Me.Bar1.Size = New System.Drawing.Size(530, 41)
@@ -181,6 +182,14 @@ Partial Class Frm_Genera_Key_Empresa
         Me.BtnEstaciones.Image = CType(resources.GetObject("BtnEstaciones.Image"), System.Drawing.Image)
         Me.BtnEstaciones.Name = "BtnEstaciones"
         Me.BtnEstaciones.Tooltip = "Grabar"
+        '
+        'Btn_Exportar_Licencia
+        '
+        Me.Btn_Exportar_Licencia.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.Btn_Exportar_Licencia.ForeColor = System.Drawing.Color.Black
+        Me.Btn_Exportar_Licencia.Image = CType(resources.GetObject("Btn_Exportar_Licencia.Image"), System.Drawing.Image)
+        Me.Btn_Exportar_Licencia.Name = "Btn_Exportar_Licencia"
+        Me.Btn_Exportar_Licencia.Text = "Exportar licencia .txt"
         '
         'LblFechaExpiracion
         '
@@ -715,13 +724,13 @@ Partial Class Frm_Genera_Key_Empresa
         Me.Txt_Llave3.TabStop = False
         Me.Txt_Llave3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'Btn_Exportar_Licencia
+        'Btn_Editar_Conexion
         '
-        Me.Btn_Exportar_Licencia.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.Btn_Exportar_Licencia.ForeColor = System.Drawing.Color.Black
-        Me.Btn_Exportar_Licencia.Image = CType(resources.GetObject("Btn_Exportar_Licencia.Image"), System.Drawing.Image)
-        Me.Btn_Exportar_Licencia.Name = "Btn_Exportar_Licencia"
-        Me.Btn_Exportar_Licencia.Text = "Exportar licencia .txt"
+        Me.Btn_Editar_Conexion.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.Btn_Editar_Conexion.ForeColor = System.Drawing.Color.Black
+        Me.Btn_Editar_Conexion.Image = CType(resources.GetObject("Btn_Editar_Conexion.Image"), System.Drawing.Image)
+        Me.Btn_Editar_Conexion.Name = "Btn_Editar_Conexion"
+        Me.Btn_Editar_Conexion.Tooltip = "Grabar"
         '
         'Frm_Genera_Key_Empresa
         '
@@ -790,4 +799,5 @@ Partial Class Frm_Genera_Key_Empresa
     Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
     Public WithEvents Txt_Llave3 As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents Btn_Exportar_Licencia As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents Btn_Editar_Conexion As DevComponents.DotNetBar.ButtonItem
 End Class

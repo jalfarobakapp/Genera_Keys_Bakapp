@@ -117,7 +117,8 @@ Public Class Frm_Conectar
                                                       "Puerto = '" & TxtPuerto.Text & "'," &
                                                       "Usuario = '" & TxtUsuario.Text & "'," &
                                                       "Clave = '" & TxtClave.Text & "'," &
-                                                      "BaseDeDatos = '" & TxtBaseDeDatos.Text & "'" & vbCrLf &
+                                                      "BaseDeDatos = '" & TxtBaseDeDatos.Text & "'," &
+                                                      "BaseDeDatos_BakApp = '" & TxtBaseDeDatosBakApp.Text & "'" & vbCrLf &
                                                       "Where Rut = '" & TxtRut.Text & "'"
 
                 If _SQLite.Ej_consulta_IDU(Consulta_sql) Then

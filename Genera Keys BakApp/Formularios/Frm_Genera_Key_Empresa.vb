@@ -153,7 +153,6 @@ Public Class Frm_Genera_Key_Empresa
         'Txt_Llave1.Text = _Lc ' Fx_Generar_Llave(_Lc)
         'Txt_Llave2.Text = _Md5
 
-
         TxtCant_licencias.Enabled = False
         DtpFechaExpiracion.Enabled = False
 
@@ -184,6 +183,31 @@ Public Class Frm_Genera_Key_Empresa
                                         3 * 1000, eToastGlowColor.Green, eToastPosition.MiddleCenter)
 
         Clipboard.SetText(_Ruta_Licencia)
+
+    End Sub
+
+    Private Sub Btn_Editar_Conexion_Click(sender As Object, e As EventArgs) Handles Btn_Editar_Conexion.Click
+
+        _Usuario = _Row_Empresa.Item("Usuario")
+        _Clave = _Row_Empresa.Item("Clave")
+        _BaseDeDatos = _Row_Empresa.Item("BaseDeDatos")
+
+        Dim Fm As New Frm_Conectar
+        Fm.TxtServidor.Text = _Servidor
+        Fm.TxtPuerto.Text = _Puerto
+        Fm.TxtUsuario.Text = _Usuario
+        Fm.TxtClave.Text = _Clave
+        Fm.TxtBaseDeDatos.Text = _BaseDeDatos
+        Fm.TxtBaseDeDatosBakApp.Text = _Base_BakApp
+        Fm.ShowDialog(Me)
+
+        _Servidor = Fm.TxtServidor.Text
+        _Puerto = Fm.TxtPuerto.Text
+        _Usuario = Fm.TxtUsuario.Text
+        _Clave = Fm.TxtClave.Text
+        _BaseDeDatos = Fm.TxtBaseDeDatos.Text
+        _Base_BakApp = Fm.TxtBaseDeDatosBakApp.Text
+        Fm.Dispose()
 
     End Sub
 
