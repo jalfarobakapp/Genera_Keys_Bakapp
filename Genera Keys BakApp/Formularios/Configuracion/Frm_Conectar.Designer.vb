@@ -375,7 +375,6 @@ Partial Class Frm_Conectar
         Me.TxtCiudad.ForeColor = System.Drawing.Color.Black
         Me.TxtCiudad.Location = New System.Drawing.Point(101, 229)
         Me.TxtCiudad.Name = "TxtCiudad"
-        Me.TxtCiudad.ReadOnly = True
         Me.TxtCiudad.Size = New System.Drawing.Size(200, 22)
         Me.TxtCiudad.TabIndex = 64
         Me.TxtCiudad.WatermarkText = "Largo max. 13"
@@ -410,7 +409,6 @@ Partial Class Frm_Conectar
         Me.TxtPais.ForeColor = System.Drawing.Color.Black
         Me.TxtPais.Location = New System.Drawing.Point(6, 229)
         Me.TxtPais.Name = "TxtPais"
-        Me.TxtPais.ReadOnly = True
         Me.TxtPais.Size = New System.Drawing.Size(89, 22)
         Me.TxtPais.TabIndex = 62
         Me.TxtPais.WatermarkText = "Largo max. 13"
@@ -445,7 +443,6 @@ Partial Class Frm_Conectar
         Me.TxtGiro.ForeColor = System.Drawing.Color.Black
         Me.TxtGiro.Location = New System.Drawing.Point(6, 181)
         Me.TxtGiro.Name = "TxtGiro"
-        Me.TxtGiro.ReadOnly = True
         Me.TxtGiro.Size = New System.Drawing.Size(482, 22)
         Me.TxtGiro.TabIndex = 53
         Me.TxtGiro.WatermarkText = "Griro (Largo Max. 100 caracteres)"
@@ -464,7 +461,6 @@ Partial Class Frm_Conectar
         Me.TxtRut.ForeColor = System.Drawing.Color.Black
         Me.TxtRut.Location = New System.Drawing.Point(6, 23)
         Me.TxtRut.Name = "TxtRut"
-        Me.TxtRut.ReadOnly = True
         Me.TxtRut.Size = New System.Drawing.Size(140, 22)
         Me.TxtRut.TabIndex = 50
         Me.TxtRut.WatermarkText = "Largo max. 13"
@@ -483,7 +479,6 @@ Partial Class Frm_Conectar
         Me.TxtNombreCorto.ForeColor = System.Drawing.Color.Black
         Me.TxtNombreCorto.Location = New System.Drawing.Point(212, 23)
         Me.TxtNombreCorto.Name = "TxtNombreCorto"
-        Me.TxtNombreCorto.ReadOnly = True
         Me.TxtNombreCorto.Size = New System.Drawing.Size(276, 22)
         Me.TxtNombreCorto.TabIndex = 60
         Me.TxtNombreCorto.WatermarkText = "Largo max. 13"
@@ -534,7 +529,6 @@ Partial Class Frm_Conectar
         Me.TxtRazonSocial.ForeColor = System.Drawing.Color.Black
         Me.TxtRazonSocial.Location = New System.Drawing.Point(6, 74)
         Me.TxtRazonSocial.Name = "TxtRazonSocial"
-        Me.TxtRazonSocial.ReadOnly = True
         Me.TxtRazonSocial.Size = New System.Drawing.Size(482, 22)
         Me.TxtRazonSocial.TabIndex = 51
         Me.TxtRazonSocial.WatermarkText = "Razón Social (Largo max. 50 caracteres)"
@@ -569,7 +563,6 @@ Partial Class Frm_Conectar
         Me.TxtDireccion.ForeColor = System.Drawing.Color.Black
         Me.TxtDireccion.Location = New System.Drawing.Point(6, 129)
         Me.TxtDireccion.Name = "TxtDireccion"
-        Me.TxtDireccion.ReadOnly = True
         Me.TxtDireccion.Size = New System.Drawing.Size(482, 22)
         Me.TxtDireccion.TabIndex = 52
         Me.TxtDireccion.WatermarkText = "Razón Social (Largo max. 50 caracteres)"
@@ -633,7 +626,6 @@ Partial Class Frm_Conectar
         Me.Controls.Add(Me.Bar1)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ForeColor = System.Drawing.Color.Black
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
