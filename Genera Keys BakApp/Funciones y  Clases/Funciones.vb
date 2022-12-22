@@ -47,7 +47,7 @@ Public Module Funciones
     Public _MTS_Lista_activo As Boolean
 
 
-    Public Function Hora_Grab_fx(ByVal _EsAjuste As Boolean) As String
+    Public Function Hora_Grab_fx(_EsAjuste As Boolean) As String
 
         Dim _HH_sistem As Date
 
@@ -72,7 +72,7 @@ Public Module Funciones
     
 
 
-    Function Fx_Encriptar(ByVal Input As String, ByVal _Codigo_Encryptador As String) As String
+    Function Fx_Encriptar(Input As String, _Codigo_Encryptador As String) As String
 
         Dim IV() As Byte = ASCIIEncoding.ASCII.GetBytes(_Codigo_Encryptador) 'La clave debe ser de 8 caracteres
         Dim EncryptionKey() As Byte = Convert.FromBase64String("rpaSPvIvVLlrcmtzPU9/c67Gkj7yL1S5") 'No se puede alterar la cantidad de caracteres pero si la clave
@@ -85,7 +85,7 @@ Public Module Funciones
 
     End Function
 
-    Function Fx_Desencriptar(ByVal Input As String, ByVal _Codigo_Encryptador As String) As String
+    Function Fx_Desencriptar(Input As String, _Codigo_Encryptador As String) As String
 
         Dim IV() As Byte = ASCIIEncoding.ASCII.GetBytes(_Codigo_Encryptador) 'La clave debe ser de 8 caracteres
         Dim EncryptionKey() As Byte = Convert.FromBase64String("rpaSPvIvVLlrcmtzPU9/c67Gkj7yL1S5") 'No se puede alterar la cantidad de caracteres pero si la clave
@@ -98,7 +98,7 @@ Public Module Funciones
     End Function
 
 
-    Function Fx_Generar_Llave(ByVal _Cadena As String) As String
+    Function Fx_Generar_Llave(_Cadena As String) As String
         ' Obtenemos la longitud de la cadena de _Cadena
         Dim longitud As Byte = _Cadena.Length
         ' Declaramos valorEntrada para obtener el valor general
@@ -157,12 +157,12 @@ Public Module Funciones
     End Function
 
 
-    Function ActualizaLaGrilla(ByVal Grilla As DataGridView, _
-                               ByVal tabla As DataTable, _
-                               ByVal ConsultaSQL As String, _
-                               ByVal cn As SqlConnection, _
-                               Optional ByVal Autoalineacion As Boolean = True, _
-                               Optional ByVal MostrarMensaje As Boolean = False)
+    Function ActualizaLaGrilla(Grilla As DataGridView, _
+                               tabla As DataTable, _
+                               ConsultaSQL As String, _
+                               cn As SqlConnection, _
+                               Optional Autoalineacion As Boolean = True, _
+                               Optional MostrarMensaje As Boolean = False)
 
         Ejecutar_consulta_SQL(ConsultaSQL, cn)
 
@@ -185,13 +185,13 @@ Public Module Funciones
 
     End Function
 
-    Sub Formato_Generico_Grilla(ByVal Grilla As DataGridView, _
-                                ByVal Alto As Integer, _
-                                ByVal Fuente As Font, _
-                                ByVal Colores As Color, _
-                                Optional ByVal VerEncFila As Boolean = False, _
-                                Optional ByVal SeleccionarTodaLaFila As Boolean = False, _
-                                Optional ByVal _Multiselect As Boolean = False)
+    Sub Formato_Generico_Grilla(Grilla As DataGridView, _
+                                Alto As Integer, _
+                                Fuente As Font, _
+                                Colores As Color, _
+                                Optional VerEncFila As Boolean = False, _
+                                Optional SeleccionarTodaLaFila As Boolean = False, _
+                                Optional _Multiselect As Boolean = False)
 
         With Grilla
             .RowHeadersVisible = VerEncFila
@@ -226,9 +226,9 @@ Public Module Funciones
 
 
 
-    Function UpdateDatabase(ByVal dt As DataTable, _
-                            ByVal sql As String, _
-                            ByVal cn As SqlConnection) As Integer
+    Function UpdateDatabase(dt As DataTable, _
+                            sql As String, _
+                            cn As SqlConnection) As Integer
 
         ' Si el valor del objeto DataTable es Nothing, provocamos
         ' una excepción.
@@ -267,12 +267,12 @@ Public Module Funciones
 
     End Function
 
-    Public Sub Conectar_SQL(ByVal Servidor As String, _
-                                 ByVal BaseDatos As String, _
-                                 ByVal Usuario As String, _
-                                 ByVal Clave As String, _
-                                 ByVal cn As SqlConnection, _
-                                 Optional ByVal Cadena_conec As String = "")
+    Public Sub Conectar_SQL(Servidor As String, _
+                                 BaseDatos As String, _
+                                 Usuario As String, _
+                                 Clave As String, _
+                                 cn As SqlConnection, _
+                                 Optional Cadena_conec As String = "")
 
         ' La cadena de conexión
         Dim sCnn As String
@@ -301,9 +301,9 @@ Public Module Funciones
     End Sub
 
 
-    Function ValidarExistenciaDeCodigo(ByVal Codigo As String, _
-                                       ByVal Campo As String, _
-                                       Optional ByVal MostrarMensaje As Boolean = True)
+    Function ValidarExistenciaDeCodigo(Codigo As String, _
+                                       Campo As String, _
+                                       Optional MostrarMensaje As Boolean = True)
         If trae_dato(tb, cn1, Campo, "MAEPR", Campo & " = '" & Codigo & "'") <> "" Then
 
             If MostrarMensaje = True Then
@@ -345,10 +345,10 @@ Public Module Funciones
 
     
 
-    Public Function Ejecutar_consulta_SQL(ByVal SQL As String, _
-                                     ByVal Cnn As SqlConnection, _
-                                     Optional ByVal BaseConexion As Integer = ArchivoConexion.BasePrincipal, _
-                                     Optional ByVal CadenaLocal As String = "", Optional ByVal MostrarError As Boolean = True) As Boolean
+    Public Function Ejecutar_consulta_SQL(SQL As String, _
+                                     Cnn As SqlConnection, _
+                                     Optional BaseConexion As Integer = ArchivoConexion.BasePrincipal, _
+                                     Optional CadenaLocal As String = "", Optional MostrarError As Boolean = True) As Boolean
         Try
             SQL_ServerClass.AbrirConexion_SQLServer(Cnn, BaseConexion, CadenaLocal, MostrarError)
             'System.Windows.Forms.Application.DoEvents()
@@ -381,10 +381,10 @@ Public Module Funciones
 
 
 
-    Public Function Ej_consulta_IDU(ByVal ConsultaSql As String, _
-                                    ByVal cn As SqlConnection, _
-                                    Optional ByVal BaseConexion As Integer = ArchivoConexion.BasePrincipal, _
-                                    Optional ByVal CadenaLocal As String = "", Optional ByVal MostrarError As Boolean = True) As Boolean
+    Public Function Ej_consulta_IDU(ConsultaSql As String, _
+                                    cn As SqlConnection, _
+                                    Optional BaseConexion As Integer = ArchivoConexion.BasePrincipal, _
+                                    Optional CadenaLocal As String = "", Optional MostrarError As Boolean = True) As Boolean
         Try
             'Abrimos la conexión con la base de datos
             SQL_ServerClass.AbrirConexion_SQLServer(cn, BaseConexion, CadenaLocal)
@@ -414,7 +414,7 @@ Public Module Funciones
 
 
 
-    Sub ActualizarPrecioBkRandom(ByVal Lista As String)
+    Sub ActualizarPrecioBkRandom(Lista As String)
 
         Consulta_sql = "INSERT INTO Zw_ListaPreProducto (Lista, Codigo, Formula, Redondear, Precio, Margen, DsctoMax)" & vbCrLf & _
                            "SELECT KOLT,KOPR,'',1,0,MG01UD,DTMA01UD FROM TABPRE" & vbCrLf & _
@@ -426,7 +426,7 @@ Public Module Funciones
 
 
 
-    Function numero_(ByVal Num As String, ByVal d As Integer) As String
+    Function numero_(Num As String, d As Integer) As String
         Dim i As Integer
         Dim nro As String
         nro = Len(RTrim$(Num))
@@ -440,10 +440,10 @@ Public Module Funciones
 
     
 
-    Function Cuenta_registros(ByVal Tabla As String, _
-                              Optional ByVal condicion As String = "", _
-                              Optional ByVal BaseConexion As Integer = ArchivoConexion.BasePrincipal, _
-                              Optional ByVal _CadenaLocal As String = "") As String
+    Function Cuenta_registros(Tabla As String, _
+                              Optional condicion As String = "", _
+                              Optional BaseConexion As Integer = ArchivoConexion.BasePrincipal, _
+                              Optional _CadenaLocal As String = "") As String
         Try
 
             Dim Como As String = " WHERE "
@@ -464,8 +464,8 @@ Public Module Funciones
 
     End Function
 
-    Function QuitaEspacios_ParaCodigos(ByVal s As String, _
-                           ByVal lon As Integer) As String
+    Function QuitaEspacios_ParaCodigos(s As String, _
+                           lon As Integer) As String
 
         Dim arr(lon - 1) As Char '= s.ToCharArray
         arr = s.ToCharArray
@@ -506,8 +506,8 @@ Public Module Funciones
 
 
 
-    Function CadenaConexionSQL(ByVal NombreConexion As String, _
-                               ByVal DsConexion As DataSet)
+    Function CadenaConexionSQL(NombreConexion As String, _
+                               DsConexion As DataSet)
 
         Dim Cadena = "data source = #SV#; initial catalog = #BD#; user id = #US#; password = #PW#"
 
@@ -552,7 +552,7 @@ Public Module Funciones
         Return Fecha_Servidor
     End Function
 
-    Function MensajeSinPermiso(ByVal Nro As String)
+    Function MensajeSinPermiso(Nro As String)
 
         Dim NombrePermiso As String = trae_dato(tb, cn1, "DescripcionPermiso", _
                                          "ZW_Permisos", "CodPermiso = '" & Nro & "'")
@@ -570,12 +570,12 @@ Public Module Funciones
 
     End Function
 
-    Function InsertarBotonenGrilla(ByVal Grilla As Object, _
-                                  ByVal NombreBoton As String, _
-                                  ByVal TextoBoton As String, _
-                                  ByVal NombreColumna As String, _
-                                  ByVal Nrocolumna As Integer, _
-                                  Optional ByVal TipoBoton As Integer = 1)
+    Function InsertarBotonenGrilla(Grilla As Object, _
+                                  NombreBoton As String, _
+                                  TextoBoton As String, _
+                                  NombreColumna As String, _
+                                  Nrocolumna As Integer, _
+                                  Optional TipoBoton As Integer = 1)
 
         Dim column As Object
         If TipoBoton = 1 Then
@@ -625,8 +625,8 @@ Public Module Funciones
 
 
 
-    Function listado_seleccionado(ByVal CheckedListBox As CheckedListBox, _
-                                  Optional ByVal cr As String = "'") As String
+    Function listado_seleccionado(CheckedListBox As CheckedListBox, _
+                                  Optional cr As String = "'") As String
 
         'listado_seleccionado
         'trae_codigo_busqueda
@@ -650,7 +650,7 @@ Public Module Funciones
 
     End Function
 
-    Function trae_codigo_busqueda(ByVal descripcion) As String
+    Function trae_codigo_busqueda(descripcion) As String
         Dim codigo As String
         Select Case descripcion
             Case "Guia venta" : codigo = "GDV"
@@ -671,7 +671,7 @@ Public Module Funciones
         Return codigo
     End Function
 
-    Public Function Ruta_conexion(ByVal Ruta As String) As String
+    Public Function Ruta_conexion(Ruta As String) As String
         Try
 
             Dim texto As String
@@ -684,7 +684,7 @@ Public Module Funciones
         End Try
     End Function
 
-    Public Function LeeArchivo(ByVal Ruta As String) As String
+    Public Function LeeArchivo(Ruta As String) As String
         Dim texto As String
         Dim sr As New System.IO.StreamReader(Ruta)
         texto = sr.ReadToEnd()
@@ -692,8 +692,8 @@ Public Module Funciones
         Return texto
     End Function
 
-    Public Function Chequear_todo(ByVal CheckedListBox As CheckedListBox, _
-                           ByVal estado As Boolean)
+    Public Function Chequear_todo(CheckedListBox As CheckedListBox, _
+                           estado As Boolean)
 
         'Dim sb As New System.Text.StringBuilder
         'Dim i As Integer = 0
@@ -703,7 +703,7 @@ Public Module Funciones
         Next
     End Function
 
-    Public Function Encripta_md5(ByVal TextoAEncriptar As String) As String
+    Public Function Encripta_md5(TextoAEncriptar As String) As String
         Dim vlo_MD5 As New MD5CryptoServiceProvider
         Dim vlby_Byte(), vlby_Hash() As Byte
         Dim vls_TextoEncriptado As String = ""
@@ -723,16 +723,16 @@ Public Module Funciones
         Return vls_TextoEncriptado
     End Function
 
-    Public Function trae_dato(ByVal tb As DataTable, _
-                              ByVal Cnn As SqlConnection, _
-                              ByVal CAMPO As String, _
-                              ByVal TABLA As String, _
-                              Optional ByVal condicion As String = "", _
-                              Optional ByVal DevNumero As Boolean = False, _
-                              Optional ByVal BaseConexion As Integer = ArchivoConexion.BasePrincipal, _
-                              Optional ByVal CadenaLocal As String = "", _
-                              Optional ByVal MostrarError As Boolean = True, _
-                              Optional ByVal Valor_Si_No_Encuentra As String = "") As String
+    Public Function trae_dato(tb As DataTable, _
+                              Cnn As SqlConnection, _
+                              CAMPO As String, _
+                              TABLA As String, _
+                              Optional condicion As String = "", _
+                              Optional DevNumero As Boolean = False, _
+                              Optional BaseConexion As Integer = ArchivoConexion.BasePrincipal, _
+                              Optional CadenaLocal As String = "", _
+                              Optional MostrarError As Boolean = True, _
+                              Optional Valor_Si_No_Encuentra As String = "") As String
         Try
 
             If condicion <> "" Then
@@ -786,8 +786,8 @@ Public Module Funciones
 
     End Function
 
-    Public Function Fx_Tipo_Grab_Modalidad(ByVal _TipoDoc As String, _
-                                           ByVal _NrNumeroDoco As String) As String
+    Public Function Fx_Tipo_Grab_Modalidad(_TipoDoc As String, _
+                                           _NrNumeroDoco As String) As String
 
 
         'Dim _NrNumeroDoco As String = trae_dato(tb, cn1, _TipoDoc, "CONFIEST", "EMPRESA = '" & ModEmpresa & _
@@ -818,8 +818,8 @@ Public Module Funciones
 
     End Function
 
-    Public Function Traer_Numero_Documento(ByVal _TipoDoc As String, _
-                                           Optional ByVal _NumeroDoc As String = "")
+    Public Function Traer_Numero_Documento(_TipoDoc As String, _
+                                           Optional _NumeroDoc As String = "")
 
         Dim _CambiarNroOrigen_Modalidad As Boolean
         Dim _Existe_Doc As Integer
@@ -910,12 +910,12 @@ Public Module Funciones
     End Function
 
 
-    Public Function trae_Mayor_o_Menor_Valor(ByVal tb As DataTable, _
-                          ByVal Cnn As SqlConnection, _
-                          ByVal CAMPO As String, _
-                          ByVal TABLA As String, _
-                          ByVal CampoOrden As String, _
-                          Optional ByVal Tipo As String = "Mayor") As String
+    Public Function trae_Mayor_o_Menor_Valor(tb As DataTable, _
+                          Cnn As SqlConnection, _
+                          CAMPO As String, _
+                          TABLA As String, _
+                          CampoOrden As String, _
+                          Optional Tipo As String = "Mayor") As String
 
         Dim Sqlconsulta As String
 
@@ -950,7 +950,7 @@ Public Module Funciones
 
     
 
-    Function RutDigito(ByVal numero As String) As String
+    Function RutDigito(numero As String) As String
 
         Dim cuenta, Suma, resto, Digito As Integer
         Dim dig As Decimal
@@ -976,7 +976,7 @@ Public Module Funciones
 
     End Function
 
-    Function VerificaDigito(ByVal RUT As String) As Boolean
+    Function VerificaDigito(RUT As String) As Boolean
         Try
 
             Dim Rt(1) As String
@@ -1000,9 +1000,9 @@ Public Module Funciones
     End Function
 
     Public Function SumarDatodeGrilla( _
-       ByVal nombre_Columna As String, _
-       ByVal Dgv As DataGridView, _
-       Optional ByVal Resta As Integer = 1) As Double
+       nombre_Columna As String, _
+       Dgv As DataGridView, _
+       Optional Resta As Integer = 1) As Double
 
         Dim total As Double = 0
         Dim valor As Double = 0
@@ -1028,11 +1028,11 @@ Public Module Funciones
 
     End Function
 
-    Public Function trae_ultimo_Doc(ByVal tb As DataTable, _
-                              ByVal Cnn As SqlConnection, _
-                              ByVal CAMPO As String, _
-                              ByVal TABLA As String, _
-                              ByVal condicion As String) As String
+    Public Function trae_ultimo_Doc(tb As DataTable, _
+                              Cnn As SqlConnection, _
+                              CAMPO As String, _
+                              TABLA As String, _
+                              condicion As String) As String
 
         Dim Sqlconsulta As String = "SELECT TOP (1) " & CAMPO & " AS CAMPO FROM " & TABLA & " WHERE " & condicion & " order by desc"
         Ejecutar_consulta_SQL(Sqlconsulta, Cnn)
@@ -1055,12 +1055,12 @@ Public Module Funciones
         End If
     End Function
 
-    Public Function Suma_cantidades(ByVal tb As DataTable, _
-                                    ByVal Cnn As SqlConnection, _
-                                    ByVal CAMPO As String, _
-                                    ByVal TABLA As String, _
-                                    Optional ByVal condicion As String = "", _
-                                    Optional ByVal Decimales As Integer = 0) As Double
+    Public Function Suma_cantidades(tb As DataTable, _
+                                    Cnn As SqlConnection, _
+                                    CAMPO As String, _
+                                    TABLA As String, _
+                                    Optional condicion As String = "", _
+                                    Optional Decimales As Integer = 0) As Double
 
         Dim Suma As Double
 
@@ -1099,7 +1099,7 @@ Public Module Funciones
 
 
     Sub Eliminar_Campos( _
-        ByVal dt As DataTable, ByVal Id As String)
+        dt As DataTable, Id As String)
         Try
 
             ' Seleccionamos todas las filas del objeto DataTable
@@ -1136,7 +1136,7 @@ Public Module Funciones
 
 
     ' ESTA FUNCION CONVIERTE UN VALOR NULO EN UN NUMERO POR EJEMPLO CERO
-    Public Function NuloPorNro(Of T)(ByVal value As T, ByVal defaultValue As T) As T
+    Public Function NuloPorNro(Of T)(value As T, defaultValue As T) As T
 
         Dim obj1 As Object = value
         Dim obj2 As Object = defaultValue
@@ -1169,20 +1169,20 @@ Public Module Funciones
 
     End Function
 
-    Function Trae_CostoUc(ByVal Codigo As String, ByVal Unidad As Integer) As Double
+    Function Trae_CostoUc(Codigo As String, Unidad As Integer) As Double
         Dim CostoUc As Double
         CostoUc = trae_dato(tb, cn1, "PPUL0" & Unidad, "MAEPREM", _
                             "KOPR = '" & Codigo & "' and EMPRESA = '" & ModEmpresa & "'", True)
         Return CostoUc
     End Function
 
-    Function Trae_PM(ByVal Codigo As String) As Double
+    Function Trae_PM(Codigo As String) As Double
         Dim CostoPm As Double
         CostoPm = trae_dato(tb, cn1, "PM", "MAEPREM", "KOPR = '" & Codigo & "' and EMPRESA = '" & ModEmpresa & "'", True)
         Return CostoPm
     End Function
 
-    Function Trae_PM_Suc(ByVal Codigo As String) As Double
+    Function Trae_PM_Suc(Codigo As String) As Double
         Dim CostoPmSuc As Double
         CostoPmSuc = trae_dato(tb, cn1, "PMSUC", "MAEPMSUC", _
                             "KOPR = '" & Codigo & _
@@ -1191,7 +1191,7 @@ Public Module Funciones
     End Function
 
 
-    Function RevisarEstadoEntidad(ByVal Endo As String, ByVal Suendo As String) As Boolean
+    Function RevisarEstadoEntidad(Endo As String, Suendo As String) As Boolean
 
         If Endo = Nothing Then
             Endo = "1" : Suendo = ""
@@ -1209,10 +1209,10 @@ Public Module Funciones
     End Function
 
 
-    Public Function Trae_lista_de_datos(ByVal sel As String, _
-                                        ByVal Campo As String, _
-                                        ByVal tb As DataTable, _
-                                        ByVal Cnn As SqlConnection) As String()
+    Public Function Trae_lista_de_datos(sel As String, _
+                                        Campo As String, _
+                                        tb As DataTable, _
+                                        Cnn As SqlConnection) As String()
 
         Dim Arreglo() As String
 
@@ -1241,8 +1241,8 @@ Public Module Funciones
         Return Nothing
     End Function
 
-    Public Function trae_Ultimo_ID(ByVal tb As DataTable, _
-                              ByVal Cnn As SqlConnection _
+    Public Function trae_Ultimo_ID(tb As DataTable, _
+                              Cnn As SqlConnection _
                               ) As Integer
 
         Dim Sqlconsulta As String = "SELECT @@IDENTITY AS 'Identity'"
@@ -1266,28 +1266,28 @@ Public Module Funciones
         End If
     End Function
 
-    Public Function abre_formulario(ByVal form_hijo As Form, ByVal form_padre As Form) As Boolean
+    Public Function abre_formulario(form_hijo As Form, form_padre As Form) As Boolean
         'Dim Mdiform As New form_hijo
         form_hijo.MdiParent = form_padre
         form_hijo.MdiParent.Show()
         form_hijo.Visible = True
     End Function
 
-    Public Function Primerdiadelmes(ByVal fecha As Date) As Date
+    Public Function Primerdiadelmes(fecha As Date) As Date
         Dim rtn As New Date
         rtn = fecha 'Date.Now
         rtn = rtn.AddDays(-rtn.Day + 1)
         Return rtn
     End Function
 
-    Public Function ultimodiadelmes(ByVal fecha As Date) As Date
+    Public Function ultimodiadelmes(fecha As Date) As Date
         Dim rtn As New Date
         rtn = fecha.Date ' fecha 'Date.Now
         rtn = rtn.AddDays(-rtn.Day + 1).AddMonths(1).AddDays(-1)
         Return rtn
     End Function
 
-    Function llenar_combobox(ByVal listado() As String, ByVal Combo As ComboBox)
+    Function llenar_combobox(listado() As String, Combo As ComboBox)
         Try
 
             Combo.Items.Clear()
@@ -1300,11 +1300,11 @@ Public Module Funciones
 
     End Function
 
-    Function llenar_listbox(ByVal sel As String, _
-                            ByVal campo As String, _
-                            ByVal lista As ListBox, _
-                            ByVal tb As DataTable, _
-                            ByVal Cnn As SqlConnection)
+    Function llenar_listbox(sel As String, _
+                            campo As String, _
+                            lista As ListBox, _
+                            tb As DataTable, _
+                            Cnn As SqlConnection)
         lista.Items.Clear()
         Try
             Ejecutar_consulta_SQL(sel, Cnn)
@@ -1323,11 +1323,11 @@ Public Module Funciones
 
     End Function
 
-    Function llenar_arrglo_by(ByVal sel As String, _
-                              ByVal campopadre As String, _
-                              ByVal campohijo As String, _
-                              ByVal tb As DataTable, _
-                              ByVal Cnn As SqlConnection) As String(,)
+    Function llenar_arrglo_by(sel As String, _
+                              campopadre As String, _
+                              campohijo As String, _
+                              tb As DataTable, _
+                              Cnn As SqlConnection) As String(,)
 
 
         Dim Arreglo(,) As String
@@ -1368,7 +1368,7 @@ Public Module Funciones
         Return Nothing
     End Function
 
-    Function es_numero(ByVal numero As String) As Boolean
+    Function es_numero(numero As String) As Boolean
 
         Dim w As Integer
         Dim lineax As String
@@ -1412,7 +1412,7 @@ Public Module Funciones
 
     End Function
 
-    Function SoloNumeros(ByVal Keyascii As Short) As Short
+    Function SoloNumeros(Keyascii As Short) As Short
         Dim T As String = Chr(Keyascii)
         Dim dd = InStr("1234567890,.-", T)
 
@@ -1429,7 +1429,7 @@ Public Module Funciones
         End Select
     End Function
 
-    Function SoloNumerosSinPuntosNiComas(ByVal Keyascii As Short) As Short
+    Function SoloNumerosSinPuntosNiComas(Keyascii As Short) As Short
         If InStr("1234567890", Chr(Keyascii)) = 0 Then
             SoloNumerosSinPuntosNiComas = 0
         Else
@@ -1444,7 +1444,7 @@ Public Module Funciones
     End Function
 
 
-    Function SoloLetrasNumeros(ByVal Keyascii As Short) As Short
+    Function SoloLetrasNumeros(Keyascii As Short) As Short
         If InStr("abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890,.-", Chr(Keyascii)) = 0 Then
             SoloLetrasNumeros = 0
         Else
@@ -1453,10 +1453,10 @@ Public Module Funciones
     End Function
 
 
-    Function CreateXMLFile(ByVal ds As DataSet, _
-                           ByVal fileNameXML As String, _
-                           ByVal fileNameStyleSheetXSL As String, _
-                           ByVal overWrite As Boolean) As Boolean
+    Function CreateXMLFile(ds As DataSet, _
+                           fileNameXML As String, _
+                           fileNameStyleSheetXSL As String, _
+                           overWrite As Boolean) As Boolean
 
         '*******************************************************************
         ' Nombre: CreateXMLFile
@@ -1560,10 +1560,10 @@ Public Module Funciones
     End Function
 
 
-    Function CrearArchivoTxt(ByVal Ruta As String, _
-                             ByVal NombreArchivo As String, _
-                             ByVal Cuerpo As String, _
-                             Optional ByVal _Mostrar_OK As Boolean = True)
+    Function CrearArchivoTxt(Ruta As String, _
+                             NombreArchivo As String, _
+                             Cuerpo As String, _
+                             Optional _Mostrar_OK As Boolean = True)
         Try
 
             Dim RutaArchivo As String = Ruta & NombreArchivo
@@ -1592,10 +1592,10 @@ Public Module Funciones
 
     ' Función que retorna un objeto DataTable para 
     'enlazarlo con el combobox y visualizar las tablas
-    Public Function get_Tablas(ByVal Consulta_sql As String, _
-                               ByVal Cnn As SqlConnection, _
-                              Optional ByVal BaseConexion As Integer = ArchivoConexion.BasePrincipal, _
-                              Optional ByVal _CadenaLocal As String = "") As DataTable
+    Public Function get_Tablas(Consulta_sql As String, _
+                               Cnn As SqlConnection, _
+                              Optional BaseConexion As Integer = ArchivoConexion.BasePrincipal, _
+                              Optional _CadenaLocal As String = "") As DataTable
 
         Try
             SQL_ServerClass.AbrirConexion_SQLServer(Cnn, BaseConexion, _CadenaLocal)
@@ -1615,10 +1615,10 @@ Public Module Funciones
 
     End Function
 
-    Public Function _Global_Fx_Cambio_en_la_Grilla(ByVal _Tbl_Grilla As DataTable, _
-                                                   Optional ByVal _Rev_Insertas As Boolean = True, _
-                                                   Optional ByVal _Rev_Eliminadas As Boolean = True, _
-                                                   Optional ByVal _Rev_Modificada As Boolean = True) As Boolean
+    Public Function _Global_Fx_Cambio_en_la_Grilla(_Tbl_Grilla As DataTable, _
+                                                   Optional _Rev_Insertas As Boolean = True, _
+                                                   Optional _Rev_Eliminadas As Boolean = True, _
+                                                   Optional _Rev_Modificada As Boolean = True) As Boolean
 
         Dim _Modificado As Boolean
 
@@ -1642,10 +1642,10 @@ Public Module Funciones
     End Function
 
 
-    Public Sub Sb_AddToLog(ByVal Accion As String, _
-                           ByVal Descripcion As String, _
-                           ByVal TxtLog As Object, _
-                           Optional ByVal _Incluir_FechaHora As Boolean = True)
+    Public Sub Sb_AddToLog(Accion As String, _
+                           Descripcion As String, _
+                           TxtLog As Object, _
+                           Optional _Incluir_FechaHora As Boolean = True)
         If _Incluir_FechaHora Then
             TxtLog.Text += DateTime.Now.ToString() & " - " & Accion & " (" & Descripcion & ")" & vbCrLf
         Else
@@ -1658,8 +1658,8 @@ Public Module Funciones
     End Sub
 
 
-    Function Generar_Filtro_IN_Arreglo(ByVal Arreglo() As String, _
-                                       ByVal EsNumero As Boolean)
+    Function Generar_Filtro_IN_Arreglo(Arreglo() As String, _
+                                       EsNumero As Boolean)
 
         Dim Cadena As String = String.Empty
         Dim Separador As String = ""
@@ -1695,8 +1695,8 @@ Public Module Funciones
     End Function
 
 
-    Sub OcultarEncabezadoGrilla(ByVal Grilla As DataGridView, _
-                                Optional ByVal Activar_Orden_Automatico As Boolean = False)
+    Sub OcultarEncabezadoGrilla(Grilla As DataGridView, _
+                                Optional Activar_Orden_Automatico As Boolean = False)
 
         With Grilla
             ' ¿Cuantas columnas y cuantas filas?
@@ -1721,9 +1721,9 @@ Public Module Funciones
 
 
 
-    Public Function Get_DataSet(ByVal Consulta_sql As String, _
-                                ByVal Cnn As SqlConnection, _
-                                Optional ByVal BaseConexion As Integer = ArchivoConexion.BasePrincipal) As DataSet
+    Public Function Get_DataSet(Consulta_sql As String, _
+                                Cnn As SqlConnection, _
+                                Optional BaseConexion As Integer = ArchivoConexion.BasePrincipal) As DataSet
 
         Try
             SQL_ServerClass.AbrirConexion_SQLServer(Cnn)
@@ -1744,9 +1744,9 @@ Public Module Funciones
     End Function
 
 
-    Function Rellenar(ByVal Cadena As String, _
-                      ByVal CantCaracteres As Integer, _
-                      ByVal Relleno As String, Optional ByVal Derecha As Boolean = True) As String
+    Function Rellenar(Cadena As String, _
+                      CantCaracteres As Integer, _
+                      Relleno As String, Optional Derecha As Boolean = True) As String
         Dim i As Integer
         Dim nro As String
         nro = Len(Cadena)
@@ -1770,9 +1770,9 @@ Public Module Funciones
 
     
 
-    Public Function De_Num_a_Tx_01(ByVal lNumero As Double, _
-                               Optional ByVal bEntero As Boolean = False, _
-                               Optional ByVal nDecimales As Integer = 2) As String
+    Public Function De_Num_a_Tx_01(lNumero As Double, _
+                               Optional bEntero As Boolean = False, _
+                               Optional nDecimales As Integer = 2) As String
         '-------------------------------------------------§§§----'
         ' FUNCION PARA CONVERTIR UN NUMERO EN TEXTO
         '-------------------------------------------------§§§----'
@@ -1842,9 +1842,9 @@ fin:
     '‘ FUNCION PARA CONVERTIR UN TEXTO EN NUMERO DECIMAL
     '‘———————————————— -§§§— - ’
 
-    Public Function De_Txt_a_Num_01(ByVal sTexto As String, _
-                                       Optional ByVal nDecimales As Integer = 3, _
-                                       Optional ByVal sP_Formato_Decimal As String = "") As Double
+    Public Function De_Txt_a_Num_01(sTexto As String, _
+                                       Optional nDecimales As Integer = 3, _
+                                       Optional sP_Formato_Decimal As String = "") As Double
         '-------------------------------------------------§§§----'
         ' FUNCION PARA CONVERTIR UN TEXTO EN NUMERO DECIMAL
         '-------------------------------------------------§§§----'
@@ -1990,8 +1990,8 @@ Error_Numero:
 
 
     ' función que retorna el total  
-    Function SumarDatosDeGrilla(ByVal nombre_Columna As String, _
-                                        ByVal Dgv As DataGridView) As Double
+    Function SumarDatosDeGrilla(nombre_Columna As String, _
+                                        Dgv As DataGridView) As Double
 
         Dim total As Double = 0
 
@@ -2010,9 +2010,9 @@ Error_Numero:
 
     End Function
 
-    Function caract_combo(ByVal combo As Object, _
-                          Optional ByVal Padre As String = "Padre", _
-                          Optional ByVal Hijo As String = "Hijo")
+    Function caract_combo(combo As Object, _
+                          Optional Padre As String = "Padre", _
+                          Optional Hijo As String = "Hijo")
         With combo
             '.datasourse = Nothing
             .ValueMember = Padre
@@ -2025,9 +2025,9 @@ Error_Numero:
         End With
     End Function
 
-    Function CMDCargaCombo(ByVal Combo As ComboBox, _
-                           ByVal ConsultaSQl As String, _
-                           ByVal Cnn As SqlConnection)
+    Function CMDCargaCombo(Combo As ComboBox, _
+                           ConsultaSQl As String, _
+                           Cnn As SqlConnection)
         Try
 
             'Cmbsucursal.DataSource = Nothing
@@ -2053,8 +2053,8 @@ Error_Numero:
 
     Public Sub cargar_ListView( _
         ByRef ListView As ListView, _
-        ByVal sql As String, _
-        ByVal cn As SqlConnection)
+        sql As String, _
+        cn As SqlConnection)
 
         Try
             ' Crea y abre una nueva conexión
@@ -2111,7 +2111,7 @@ Error_Numero:
         End Try
     End Sub
 
-    Function llena_tabla_sola(ByVal Arreglo(,) As String)
+    Function llena_tabla_sola(Arreglo(,) As String)
 
         Dim dt As New DataTable
         dt.Columns.Add("Padre")
@@ -2132,9 +2132,9 @@ Error_Numero:
         Return dt
     End Function
 
-    Public Function CADENA_A_BUSCAR(ByVal cadena As String, _
-                             ByVal CAMPO As String, _
-                             Optional ByVal _And_Or As String = "And") As String
+    Public Function CADENA_A_BUSCAR(cadena As String, _
+                             CAMPO As String, _
+                             Optional _And_Or As String = "And") As String
 
         Dim linea1, linea2 As String
         Dim CONCATENA As String = ""
@@ -2154,9 +2154,9 @@ Error_Numero:
         'MsgBox CONCATENA
     End Function
 
-    Function Cuentadias(ByVal FechaInicio As Date, _
-                    ByVal FechaFin As Date, _
-                    ByVal Diadelasemana As FirstDayOfWeek) As Integer
+    Function Cuentadias(FechaInicio As Date, _
+                    FechaFin As Date, _
+                    Diadelasemana As FirstDayOfWeek) As Integer
 
         Dim n As Integer
         Dim Fechaini As Date = FechaInicio
@@ -2178,20 +2178,20 @@ End Module
 
 Public Module FuncionesInventario
 
-    Function Inventariado(ByVal CodigoPrincipal As String, _
-                          ByVal CodigoRapido As String, _
-                          ByVal CodigoTecnico As String, _
-                          ByVal CodBarraPR As String, _
-                          ByVal DescripcionPR As String, _
-                          ByVal CantidadInventariada As String, _
-                          ByVal CodUbicacion As String, _
-                          ByVal CodEmpresa As String, _
-                          ByVal CodSucursal As String, _
-                          ByVal CodBodega As String, _
-                          ByVal DescripcionUbicacion As String, _
-                          ByVal FuncionarioResponzable As String, _
-                          ByVal FuncionarioContador As String, _
-                         Optional ByVal ActualizarUbicBodega As Boolean = False) As Boolean
+    Function Inventariado(CodigoPrincipal As String, _
+                          CodigoRapido As String, _
+                          CodigoTecnico As String, _
+                          CodBarraPR As String, _
+                          DescripcionPR As String, _
+                          CantidadInventariada As String, _
+                          CodUbicacion As String, _
+                          CodEmpresa As String, _
+                          CodSucursal As String, _
+                          CodBodega As String, _
+                          DescripcionUbicacion As String, _
+                          FuncionarioResponzable As String, _
+                          FuncionarioContador As String, _
+                         Optional ActualizarUbicBodega As Boolean = False) As Boolean
         Dim Fecha As String = Format(Now, "yyyyMMdd")
 
         Try
@@ -2222,8 +2222,8 @@ Public Module FuncionesInventario
 
 
 
-    Function BuscarDatoEnGrilla(ByVal TextoABuscar As String, _
-                                ByVal Columna As String, ByRef grid As DataGridView) As Boolean
+    Function BuscarDatoEnGrilla(TextoABuscar As String, _
+                                Columna As String, ByRef grid As DataGridView) As Boolean
         Dim encontrado As Boolean = False
         If TextoABuscar = String.Empty Then Return False
         If grid.RowCount = 0 Then Return False
@@ -2260,7 +2260,7 @@ Public Module FuncionesInventario
 
 
 
-    Private Function BuscarTextoGrilla(ByVal Texto As String, ByVal Busqueda As String) As Boolean
+    Private Function BuscarTextoGrilla(Texto As String, Busqueda As String) As Boolean
         Dim i As Integer
         i = InStr(1, Texto, Busqueda)
         If i > 0 Then
@@ -2271,9 +2271,9 @@ Public Module FuncionesInventario
     End Function
 
 
-    Public Function TablaDePasoFiltro(ByVal cn As SqlConnection, _
-                              ByVal TablaDePAso As String, _
-                              ByVal Accion As String)
+    Public Function TablaDePasoFiltro(cn As SqlConnection, _
+                              TablaDePAso As String, _
+                              Accion As String)
         'ZZW_TblPasoFiltro" & FUNCIONARIO & "
         Consulta_sql = "IF EXISTS (SELECT * FROM sysobjects WHERE name='" & TablaDePAso & "') BEGIN " & vbCrLf & _
                            "DROP TABLE " & TablaDePAso & " End " & vbCrLf
@@ -2286,7 +2286,7 @@ Public Module FuncionesInventario
 
     End Function
 
-    Public Function TablaDePasoFiltroEntidades(ByVal cn As SqlConnection, ByVal Accion As String)
+    Public Function TablaDePasoFiltroEntidades(cn As SqlConnection, Accion As String)
 
         Consulta_sql = "IF EXISTS (SELECT * FROM sysobjects WHERE name='ZZW_TblPasoEntExcluidas" & FUNCIONARIO & "') BEGIN " & vbCrLf & _
                            "DROP TABLE ZZW_TblPasoEntExcluidas" & FUNCIONARIO & " End " & vbCrLf
@@ -2300,7 +2300,7 @@ Public Module FuncionesInventario
 
     End Function
 
-    Public Function TablaDePasoVarianza(ByVal cn As SqlConnection, ByVal Accion As String)
+    Public Function TablaDePasoVarianza(cn As SqlConnection, Accion As String)
 
 
         Consulta_sql = "IF EXISTS (SELECT * FROM sysobjects WHERE name='W_VARIANZA_PASO" & FUNCIONARIO & "') BEGIN " & vbCrLf & _
@@ -2314,7 +2314,7 @@ Public Module FuncionesInventario
         Ej_consulta_IDU(Consulta_sql, cn)
     End Function
 
-    Public Function TablaDePasoFechas(ByVal cn As SqlConnection, ByVal Accion As String)
+    Public Function TablaDePasoFechas(cn As SqlConnection, Accion As String)
         Try
 
             Consulta_sql = "IF EXISTS (SELECT * FROM sysobjects WHERE name='ZZW_TblPasoFechas" & FUNCIONARIO & "') " & vbCrLf & _
@@ -2357,10 +2357,10 @@ Public Module FuncionesInventario
     End Function
 
 
-    Function VisualizarFormulario(ByVal Formulario As Object, _
-                                  ByVal FormularioPadre As Form, _
-                                  Optional ByVal VerEnShowDialong As Boolean = True, _
-                                  Optional ByVal EsMDI As Boolean = False _
+    Function VisualizarFormulario(Formulario As Object, _
+                                  FormularioPadre As Form, _
+                                  Optional VerEnShowDialong As Boolean = True, _
+                                  Optional EsMDI As Boolean = False _
                                   )
 
         If EsMDI = True Then
@@ -2413,7 +2413,7 @@ Public Module FuncionesInventario
     End Sub
 
 
-    Public Sub Validar_Keypress_Nros_Grilla(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
+    Public Sub Validar_Keypress_Nros_Grilla(sender As Object, e As System.Windows.Forms.KeyPressEventArgs)
         ' evento Keypress  
 
         ' obtener indice de la columna  
@@ -2452,9 +2452,9 @@ Public Module FuncionesInventario
         'End With
     End Sub
 
-    Public Function Fx_Rellena_ceros(ByVal _NroDoc As String, _
-                                    ByVal _NroCaracateres As Integer, _
-                                    Optional ByVal _Suma_uno As Boolean = False) As String
+    Public Function Fx_Rellena_ceros(_NroDoc As String, _
+                                    _NroCaracateres As Integer, _
+                                    Optional _Suma_uno As Boolean = False) As String
 
         Dim _Contador = 1
         Dim _Tot_carac = Len(_NroDoc)
@@ -2494,7 +2494,7 @@ Public Module FuncionesInventario
 
     End Function
 
-    Function _Dev_HoraGrab(ByVal Hora As String)
+    Function _Dev_HoraGrab(Hora As String)
 
         Dim _HH, _MM, _SS As Double
         Dim _Horagrab As Integer
@@ -2511,8 +2511,8 @@ Public Module FuncionesInventario
 
 
 
-    Function Trae_Datos_Entidad(ByVal _CodEntidad As String, _
-                                ByVal _CodSucursal As String) As DataTable
+    Function Trae_Datos_Entidad(_CodEntidad As String, _
+                                _CodSucursal As String) As DataTable
 
         Consulta_sql = "Select *," & _
                        "(Select NOKOCI From TABCI Where KOPA = PAEN And KOCI = CIEN) As CIUDAD," & _

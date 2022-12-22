@@ -43,7 +43,7 @@ Partial Public Class Ds_Empresas
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+    Protected Sub New(info As Global.System.Runtime.Serialization.SerializationInfo, context As Global.System.Runtime.Serialization.StreamingContext)
         MyBase.New(info, context, false)
         If (Me.IsBinarySerialized(info, context) = true) Then
             Me.InitVars(false)
@@ -148,7 +148,7 @@ Partial Public Class Ds_Empresas
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Protected Overrides Sub ReadXmlSerializable(ByVal reader As Global.System.Xml.XmlReader)
+    Protected Overrides Sub ReadXmlSerializable(reader As Global.System.Xml.XmlReader)
         If (Me.DetermineSchemaSerializationMode(reader) = Global.System.Data.SchemaSerializationMode.IncludeSchema) Then
             Me.Reset
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
@@ -187,7 +187,7 @@ Partial Public Class Ds_Empresas
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Friend Overloads Sub InitVars(ByVal initTable As Boolean)
+    Friend Overloads Sub InitVars(initTable As Boolean)
         Me.tableCnBakApp = CType(MyBase.Tables("CnBakApp"),CnBakAppDataTable)
         If (initTable = true) Then
             If (Not (Me.tableCnBakApp) Is Nothing) Then
@@ -216,7 +216,7 @@ Partial Public Class Ds_Empresas
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Private Sub SchemaChanged(ByVal sender As Object, ByVal e As Global.System.ComponentModel.CollectionChangeEventArgs)
+    Private Sub SchemaChanged(sender As Object, e As Global.System.ComponentModel.CollectionChangeEventArgs)
         If (e.Action = Global.System.ComponentModel.CollectionChangeAction.Remove) Then
             Me.InitVars
         End If
@@ -224,7 +224,7 @@ Partial Public Class Ds_Empresas
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Shared Function GetTypedDataSetSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+    Public Shared Function GetTypedDataSetSchema(xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
         Dim ds As Ds_Empresas = New Ds_Empresas()
         Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
         Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
@@ -273,7 +273,7 @@ Partial Public Class Ds_Empresas
     End Function
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Delegate Sub CnBakAppRowChangeEventHandler(ByVal sender As Object, ByVal e As CnBakAppRowChangeEvent)
+    Public Delegate Sub CnBakAppRowChangeEventHandler(sender As Object, e As CnBakAppRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -315,7 +315,7 @@ Partial Public Class Ds_Empresas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+        Friend Sub New(table As Global.System.Data.DataTable)
             MyBase.New
             Me.TableName = table.TableName
             If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
@@ -333,7 +333,7 @@ Partial Public Class Ds_Empresas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+        Protected Sub New(info As Global.System.Runtime.Serialization.SerializationInfo, context As Global.System.Runtime.Serialization.StreamingContext)
             MyBase.New(info, context)
             Me.InitVars
         End Sub
@@ -429,7 +429,7 @@ Partial Public Class Ds_Empresas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As CnBakAppRow
+        Public Default ReadOnly Property Item(index As Integer) As CnBakAppRow
             Get
                 Return CType(Me.Rows(index),CnBakAppRow)
             End Get
@@ -449,13 +449,13 @@ Partial Public Class Ds_Empresas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Sub AddCnBakAppRow(ByVal row As CnBakAppRow)
+        Public Overloads Sub AddCnBakAppRow(row As CnBakAppRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddCnBakAppRow(ByVal Rut As String, ByVal Razon As String, ByVal NombreCorto As String, ByVal Servidor As String, ByVal Puerto As String, ByVal Usuario As String, ByVal Clave As String, ByVal BaseDeDatos As String, ByVal Cant_licencias As Integer, ByVal Nro_licencia As String) As CnBakAppRow
+        Public Overloads Function AddCnBakAppRow(Rut As String, Razon As String, NombreCorto As String, Servidor As String, Puerto As String, Usuario As String, Clave As String, BaseDeDatos As String, Cant_licencias As Integer, Nro_licencia As String) As CnBakAppRow
             Dim rowCnBakAppRow As CnBakAppRow = CType(Me.NewRow,CnBakAppRow)
             Dim columnValuesArray() As Object = New Object() {Rut, Razon, NombreCorto, Servidor, Puerto, Usuario, Clave, BaseDeDatos, Cant_licencias, Nro_licencia}
             rowCnBakAppRow.ItemArray = columnValuesArray
@@ -465,7 +465,7 @@ Partial Public Class Ds_Empresas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function FindByRut(ByVal Rut As String) As CnBakAppRow
+        Public Function FindByRut(Rut As String) As CnBakAppRow
             Return CType(Me.Rows.Find(New Object() {Rut}),CnBakAppRow)
         End Function
         
@@ -537,7 +537,7 @@ Partial Public Class Ds_Empresas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+        Protected Overrides Function NewRowFromBuilder(builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
             Return New CnBakAppRow(builder)
         End Function
         
@@ -549,7 +549,7 @@ Partial Public Class Ds_Empresas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+        Protected Overrides Sub OnRowChanged(e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
             If (Not (Me.CnBakAppRowChangedEvent) Is Nothing) Then
                 RaiseEvent CnBakAppRowChanged(Me, New CnBakAppRowChangeEvent(CType(e.Row,CnBakAppRow), e.Action))
@@ -558,7 +558,7 @@ Partial Public Class Ds_Empresas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+        Protected Overrides Sub OnRowChanging(e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
             If (Not (Me.CnBakAppRowChangingEvent) Is Nothing) Then
                 RaiseEvent CnBakAppRowChanging(Me, New CnBakAppRowChangeEvent(CType(e.Row,CnBakAppRow), e.Action))
@@ -567,7 +567,7 @@ Partial Public Class Ds_Empresas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+        Protected Overrides Sub OnRowDeleted(e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
             If (Not (Me.CnBakAppRowDeletedEvent) Is Nothing) Then
                 RaiseEvent CnBakAppRowDeleted(Me, New CnBakAppRowChangeEvent(CType(e.Row,CnBakAppRow), e.Action))
@@ -576,7 +576,7 @@ Partial Public Class Ds_Empresas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+        Protected Overrides Sub OnRowDeleting(e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
             If (Not (Me.CnBakAppRowDeletingEvent) Is Nothing) Then
                 RaiseEvent CnBakAppRowDeleting(Me, New CnBakAppRowChangeEvent(CType(e.Row,CnBakAppRow), e.Action))
@@ -585,13 +585,13 @@ Partial Public Class Ds_Empresas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub RemoveCnBakAppRow(ByVal row As CnBakAppRow)
+        Public Sub RemoveCnBakAppRow(row As CnBakAppRow)
             Me.Rows.Remove(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+        Public Shared Function GetTypedTableSchema(xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
             Dim ds As Ds_Empresas = New Ds_Empresas()
@@ -666,7 +666,7 @@ Partial Public Class Ds_Empresas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+        Friend Sub New(rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
             Me.tableCnBakApp = CType(Me.Table,CnBakAppDataTable)
         End Sub
@@ -923,7 +923,7 @@ Partial Public Class Ds_Empresas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New(ByVal row As CnBakAppRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(row As CnBakAppRow, action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action

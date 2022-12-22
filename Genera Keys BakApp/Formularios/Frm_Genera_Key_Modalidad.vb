@@ -37,7 +37,7 @@ Public Class Frm_Genera_Key_Modalidad
 
     End Sub
 
-    Private Sub Grilla_CellDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles Grilla.CellDoubleClick
+    Private Sub Grilla_CellDoubleClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles Grilla.CellDoubleClick
 
         Dim _BaseBk = trae_dato(tb, cn1, "BaseDeDatos", "Zw_BakApp", , , 4, _Cadena_Base) & ".dbo."
 
@@ -106,7 +106,7 @@ Public Class Frm_Genera_Key_Modalidad
 
     End Sub
 
-    Private Sub Frm_Genera_Key_Modalidad_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub Frm_Genera_Key_Modalidad_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Sb_Actualizar_Grilla()
     End Sub
 End Class

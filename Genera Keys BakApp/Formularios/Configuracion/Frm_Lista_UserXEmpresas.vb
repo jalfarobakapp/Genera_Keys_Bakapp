@@ -46,11 +46,11 @@ Public Class Frm_Lista_UserXEmpresas
 
             OcultarEncabezadoGrilla(Grilla, True)
 
-            .Columns("Estacion_trabajo").Width = 200
+            .Columns("Estacion_trabajo").Width = 180
             .Columns("Estacion_trabajo").HeaderText = "Estación de trabajo"
             .Columns("Estacion_trabajo").Visible = True
 
-            .Columns("Llave").Width = 180
+            .Columns("Llave").Width = 200
             .Columns("Llave").HeaderText = "Llave"
             .Columns("Llave").Visible = True
 
@@ -62,11 +62,11 @@ Public Class Frm_Lista_UserXEmpresas
 
     End Sub
 
-    Private Sub Frm_Lista_UserXEmpresas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub Frm_Lista_UserXEmpresas_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Sb_Actualizar_Grilla()
     End Sub
 
-    Private Sub BtnAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnAgregar.Click
+    Private Sub BtnAgregar_Click(sender As System.Object, e As System.EventArgs) Handles BtnAgregar.Click
 
         Dim Fm As New Frm_Genera_Key_Usuarios(_Cadena_Conexion_Base_Cliente, _Base_BakApp)
         Fm.TxtRut.Text = _Row_Empresa.Item("Rut")
@@ -77,7 +77,7 @@ Public Class Frm_Lista_UserXEmpresas
 
     End Sub
 
-    Private Sub BtnxSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub BtnxSalir_Click(sender As System.Object, e As System.EventArgs)
         Me.Close()
     End Sub
 

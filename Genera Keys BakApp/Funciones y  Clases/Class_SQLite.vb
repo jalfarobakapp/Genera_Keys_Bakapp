@@ -1,7 +1,4 @@
 ﻿Imports System.Data.SQLite
-'Imports System.Data.SqlClient
-Imports System.IO
-'Imports Lib_Bakapp_VarClassFunc
 
 Public Class Class_SQLite
 
@@ -17,7 +14,7 @@ Public Class Class_SQLite
         End Get
     End Property
 
-    Public Sub New(ByVal Directorio_Base_Sqlite As String)
+    Public Sub New(Directorio_Base_Sqlite As String)
         _Directorio_Base_Sqlite = Directorio_Base_Sqlite
     End Sub
 
@@ -37,7 +34,7 @@ Public Class Class_SQLite
         End Try
     End Function
 
-    Sub Sb_Cerrar_Conexion(ByVal _Cn As SQLiteConnection)
+    Sub Sb_Cerrar_Conexion(_Cn As SQLiteConnection)
         Try
             If _Cn.State = ConnectionState.Open Then
                 '' Cerrar conexion
@@ -48,7 +45,7 @@ Public Class Class_SQLite
         End Try
     End Sub
 
-    Function Ej_consulta_IDU(ByVal ConsultaSql As String) As Boolean
+    Function Ej_consulta_IDU(ConsultaSql As String) As Boolean
         Try
             'Abrimos la conexión con la base de datos
             Sb_Abrir_Conexion(_Cn)
@@ -73,7 +70,7 @@ Public Class Class_SQLite
 
     End Function
 
-    Function Fx_Get_DataSet(ByVal Consulta_sql As String) As DataSet
+    Function Fx_Get_DataSet(Consulta_sql As String) As DataSet
 
         Try
             Sb_Abrir_Conexion(_Cn)
@@ -101,7 +98,7 @@ Public Class Class_SQLite
 
     End Function
 
-    Function Fx_Get_Tablas(ByVal Consulta_sql As String) As DataTable
+    Function Fx_Get_Tablas(Consulta_sql As String) As DataTable
 
         Dim _Tbl As New DataTable
         _Error = String.Empty
@@ -129,7 +126,7 @@ Public Class Class_SQLite
 
     End Function
 
-    Function Fx_Get_DataRow(ByVal Consulta_sql As String) As DataRow
+    Function Fx_Get_DataRow(Consulta_sql As String) As DataRow
 
         Try
 
@@ -147,7 +144,7 @@ Public Class Class_SQLite
 
     End Function
 
-    Public Function selectClave(ByVal clave As Integer) As SQLiteDataReader
+    Public Function selectClave(clave As Integer) As SQLiteDataReader
 
         Dim con As SQLiteConnection = New SQLiteConnection("Data Source=basedatos.bd")
         Dim param As SQLiteParameter = New SQLiteParameter()
@@ -160,7 +157,7 @@ Public Class Class_SQLite
 
     End Function
 
-    Function Fx_Reader(ByVal Consulta_Sql As String) As SQLiteDataReader
+    Function Fx_Reader(Consulta_Sql As String) As SQLiteDataReader
 
         Dim con As SQLiteConnection = New SQLiteConnection("Data Source=basedatos.bd")
         Dim param As SQLiteParameter = New SQLiteParameter()
@@ -175,7 +172,7 @@ Public Class Class_SQLite
     End Function
 
 
-    Sub Sb_Probar_Conexion(ByVal _Fm As Form)
+    Sub Sb_Probar_Conexion(_Fm As Form)
         Sb_Abrir_Conexion(_Cn)
 
         If String.IsNullOrEmpty(_Error) Then
@@ -194,12 +191,12 @@ Public Class Class_SQLite
         _ComboBox
     End Enum
 
-    Function Fx_Trae_Dato(ByVal _Tabla As String, _
-                         ByVal _Campo As String, _
-                         Optional ByVal _Condicion As String = "", _
-                         Optional ByVal _DevNumero As Boolean = False, _
-                         Optional ByVal _MostrarError As Boolean = True, _
-                         Optional ByVal _Dato_Default As String = "") As String
+    Function Fx_Trae_Dato(_Tabla As String,
+                         _Campo As String,
+                         Optional _Condicion As String = "",
+                         Optional _DevNumero As Boolean = False,
+                         Optional _MostrarError As Boolean = True,
+                         Optional _Dato_Default As String = "") As String
         Try
             _Error = String.Empty
             Dim _Valor
@@ -214,7 +211,7 @@ Public Class Class_SQLite
             End If
             'Then Valor_Si_No_Encuentra = 0
 
-            Dim _Sql As String = "SELECT " & _Campo & " AS CAMPO FROM " & _Tabla & vbCrLf & _
+            Dim _Sql As String = "SELECT " & _Campo & " AS CAMPO FROM " & _Tabla & vbCrLf &
                                  "Where 1 > 0" & _Condicion
 
 
@@ -253,10 +250,10 @@ Public Class Class_SQLite
 
     End Function
 
-    Sub Sb_Parametro_Informe_Sqlite(ByRef _Objeto As Object, _
-                                    ByVal _Informe As String, _
-                                    ByVal _Campo As String, _
-                                    ByVal _Tipo As Enum_Type, _
+    Sub Sb_Parametro_Informe_Sqlite(ByRef _Objeto As Object,
+                                    _Informe As String,
+                                    _Campo As String,
+                                    _Tipo As Enum_Type,
                                     ByRef _Valor_x_defecto As String)
         Dim Consulta_sql As String
         Dim _Row_Fila As DataRow
@@ -294,7 +291,7 @@ Public Class Class_SQLite
             End Select
 
             If _Insertar_dato Then
-                Consulta_sql = "INSERT INTO Tbl_Prm_Informes (Informe,Campo,Tipo,Valor) VALUES" & Space(1) & _
+                Consulta_sql = "INSERT INTO Tbl_Prm_Informes (Informe,Campo,Tipo,Valor) VALUES" & Space(1) &
                           "('" & _Informe & "','" & _Campo & "','" & Replace(_Tipo.ToString, "_", "") & "','" & _Valor & "')"
                 Ej_consulta_IDU(Consulta_sql)
             End If

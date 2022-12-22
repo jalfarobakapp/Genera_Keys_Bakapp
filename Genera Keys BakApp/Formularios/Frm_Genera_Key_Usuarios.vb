@@ -20,8 +20,8 @@ Public Class Frm_Genera_Key_Usuarios
         End Set
     End Property
 
-    Public Sub New(ByVal Cadena_Conexion_Base_Cliente As String, _
-                   ByVal Base_BakApp As String)
+    Public Sub New(Cadena_Conexion_Base_Cliente As String,
+                   Base_BakApp As String)
 
         ' Llamada necesaria para el Diseñador de Windows Forms.
         InitializeComponent()
@@ -35,17 +35,17 @@ Public Class Frm_Genera_Key_Usuarios
 
     End Sub
 
-    Private Sub Frm_Genera_Key_Usuarios_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub Frm_Genera_Key_Usuarios_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Me.ActiveControl = TxtNombreEstacion
     End Sub
-    Private Sub BtnAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnAceptar.Click
+    Private Sub BtnAceptar_Click(sender As System.Object, e As System.EventArgs) Handles BtnAceptar.Click
 
         Dim _Cadena As String = UCase(Trim(TxtRut.Text) & "@" & TxtNombreEstacion.Text)
         TxtKeyLicencia.Text = Encripta_md5(_Cadena)
 
     End Sub
 
-    Private Sub BtnGrabar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnGrabar.Click
+    Private Sub BtnGrabar_Click(sender As System.Object, e As System.EventArgs) Handles BtnGrabar.Click
 
         Dim _NombreEquipo As String = Trim(TxtNombreEstacion.Text)
 

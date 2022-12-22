@@ -49,7 +49,7 @@ Public Class Frm_Genera_Key_Empresa
         End Set
     End Property
 
-    Private Sub Frm_Genera_Key_Empresa_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub Frm_Genera_Key_Empresa_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
         ', , , , , , , , Servidor, 
         'Puerto, Usuario, Clave, BaseDeDatos, , 
@@ -113,7 +113,7 @@ Public Class Frm_Genera_Key_Empresa
 
     End Sub
 
-    Private Sub BtnEstaciones_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnEstaciones.Click
+    Private Sub BtnEstaciones_Click(sender As System.Object, e As System.EventArgs) Handles BtnEstaciones.Click
 
         Dim Fm As New Frm_Lista_UserXEmpresas(_Row_Empresa, _Cadena_Base, _Base_BakApp)
         Fm.Text = TxtRut.Text & ", " & TxtRazonSocial.Text
@@ -122,7 +122,7 @@ Public Class Frm_Genera_Key_Empresa
 
     End Sub
 
-    Private Sub BtnGenerarKey_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnGenerarKey.Click
+    Private Sub BtnGenerarKey_Click(sender As System.Object, e As System.EventArgs) Handles BtnGenerarKey.Click
 
         If DtpFechaExpiracion.Value < Now.Date Then
             MessageBoxEx.Show(Me, "La fecha no puede ser menor que la fecha de hoy", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Stop)
@@ -211,9 +211,9 @@ Public Class Frm_Genera_Key_Empresa
 
     End Sub
 
-    Function Fx_Genera_Licencia_BakApp(ByVal _RutEmpresa As String,
-                                       ByVal _FechaCaduca As Date,
-                                       ByVal _CantLicencias As Integer, ByVal _Palabra_X As String) As String()
+    Function Fx_Genera_Licencia_BakApp(_RutEmpresa As String,
+                                       _FechaCaduca As Date,
+                                       _CantLicencias As Integer, _Palabra_X As String) As String()
 
         Dim _Llave1, _Llave2, _Llave3, _Llave4 As String
 
@@ -233,7 +233,7 @@ Public Class Frm_Genera_Key_Empresa
 
     End Function
 
-    Private Sub BtnGrabar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnGrabar.Click
+    Private Sub BtnGrabar_Click(sender As System.Object, e As System.EventArgs) Handles BtnGrabar.Click
 
         Dim _Fecha As String = Format(DtpFechaExpiracion.Value, "dd-MM-yyyy")
         Dim _DiasExpira As Integer = DateDiff(DateInterval.Day, Now.Date, DtpFechaExpiracion.Value)
@@ -289,7 +289,7 @@ Public Class Frm_Genera_Key_Empresa
 
     End Sub
 
-    Private Sub BtnCambiarLicencia_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnCambiarLicencia.Click
+    Private Sub BtnCambiarLicencia_Click(sender As System.Object, e As System.EventArgs) Handles BtnCambiarLicencia.Click
 
         TxtCant_licencias.Enabled = True
         DtpFechaExpiracion.Enabled = True
@@ -303,7 +303,7 @@ Public Class Frm_Genera_Key_Empresa
 
     End Sub
 
-    Private Sub BtnModalidades_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnModalidades.Click
+    Private Sub BtnModalidades_Click(sender As System.Object, e As System.EventArgs) Handles BtnModalidades.Click
 
         Dim Fm As New Frm_Lista_ModXEmpresas
         Fm._RutEmpresa = TxtRut.Text

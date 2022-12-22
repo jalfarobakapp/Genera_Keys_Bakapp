@@ -31,7 +31,7 @@ Public Class Frm_Conectar
     Private Sub Frm_Conectar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.ActiveControl = TxtServidor
     End Sub
-    Private Sub BtnConectar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnConectar.Click
+    Private Sub BtnConectar_Click(sender As System.Object, e As System.EventArgs) Handles BtnConectar.Click
 
         If Fx_Conectar() Then
             BtnGrabar.Enabled = True
@@ -100,7 +100,7 @@ Public Class Frm_Conectar
 
     End Function
 
-    Private Sub BtnGrabar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnGrabar.Click
+    Private Sub BtnGrabar_Click(sender As System.Object, e As System.EventArgs) Handles BtnGrabar.Click
 
         Dim _Sql As New Class_SQL(_Cadena_Conexion_Base_Cliente)
 
@@ -159,7 +159,7 @@ Public Class Frm_Conectar
 
     End Sub
 
-    Private Sub BtnLimpiar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnLimpiar.Click
+    Private Sub BtnLimpiar_Click(sender As System.Object, e As System.EventArgs) Handles BtnLimpiar.Click
 
         TxtRut.Text = String.Empty
         TxtRazonSocial.Text = String.Empty

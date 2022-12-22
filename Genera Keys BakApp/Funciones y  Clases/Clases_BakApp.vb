@@ -15,9 +15,9 @@ Imports System.Data.OleDb
 Public Class SQL_Server
 
 
-    Sub Sb_Abrir_Conexion_SQLServer(ByVal ConexionSQL As SqlConnection, _
-                                    ByVal _BaseDatos_SQL As String, _
-                                    Optional ByVal MostrarError As Boolean = True)
+    Sub Sb_Abrir_Conexion_SQLServer(ConexionSQL As SqlConnection, _
+                                    _BaseDatos_SQL As String, _
+                                    Optional MostrarError As Boolean = True)
 
         Dim _sCnn = "data source = " & Servidor_SQL & "; initial catalog = " & _BaseDatos_SQL & _
                              "; user id = " & Usuario_SQL & "; password = " & Clave_SQL
@@ -39,9 +39,9 @@ Public Class SQL_Server
 
 
 
-    Sub AbrirConexion_SQLServer(ByVal ConexionSQL As SqlConnection, _
-                                Optional ByVal BaseConexion As Integer = ArchivoConexion.BasePrincipal, _
-                                Optional ByVal CadenaLocal As String = "", Optional ByVal MostrarError As Boolean = True)
+    Sub AbrirConexion_SQLServer(ConexionSQL As SqlConnection, _
+                                Optional BaseConexion As Integer = ArchivoConexion.BasePrincipal, _
+                                Optional CadenaLocal As String = "", Optional MostrarError As Boolean = True)
 
         'Dim ConexionSQL As SqlConnection
         Dim sCnn As String = ""
@@ -84,7 +84,7 @@ Public Class SQL_Server
 
     
 
-    Sub CerrarConexion(ByVal ConexionSQL As SqlConnection)
+    Sub CerrarConexion(ConexionSQL As SqlConnection)
         Try
             If ConexionSQL.State = ConnectionState.Open Then
                 '' Cerrar conexion
@@ -97,9 +97,9 @@ Public Class SQL_Server
     End Sub
 
 #Region "PROCEDIMIENTO QUE EJECUTA INSERT, UPDATE Y DELETE EN LA BASE DE DATOS DE SQL"
-    Public Function Ej_consulta_IDU(ByVal ConsultaSql As String, _
-                                    ByVal cn As SqlConnection, _
-                                    Optional ByVal BaseConexion As Integer = ArchivoConexion.BasePrincipal)
+    Public Function Ej_consulta_IDU(ConsultaSql As String, _
+                                    cn As SqlConnection, _
+                                    Optional BaseConexion As Integer = ArchivoConexion.BasePrincipal)
         Try
             AbrirConexion_SQLServer(cn, BaseConexion)
             Dim cmd As System.Data.SqlClient.SqlCommand
@@ -120,9 +120,9 @@ Public Class SQL_Server
 #End Region
 
 #Region "PROCEDIMIENTO QUE EJECUTA UN COMADO SELECT EN LA BASE Y TRAE COMO RESULTADO UNA TABLA CON REGISTROS"
-    Function LlenarTabla_SQLServer(ByVal SQL As String, _
-                                   ByVal Cnn As SqlConnection, _
-                                   Optional ByVal BaseConexion As Integer = ArchivoConexion.BasePrincipal) As DataTable
+    Function LlenarTabla_SQLServer(SQL As String, _
+                                   Cnn As SqlConnection, _
+                                   Optional BaseConexion As Integer = ArchivoConexion.BasePrincipal) As DataTable
         Try
             Dim DSCE As New DataSet
             AbrirConexion_SQLServer(Cnn, BaseConexion)
@@ -143,11 +143,11 @@ Public Class SQL_Server
 
 #Region "PROCEDIMIENTO PARA EDITAR TABLA DE SQL DESDE UNA GRILLA"
 
-    Function ActualizarGrillaUpInsDel(ByVal ConsultaSQLGrilla As String, _
-                                      ByVal Grilla As Object, _
-                                      ByVal Cnn As SqlConnection, _
-                                      Optional ByVal BaseConexion As Integer = ArchivoConexion.BasePrincipal, _
-                                      Optional ByVal EsGrilla As Boolean = True)
+    Function ActualizarGrillaUpInsDel(ConsultaSQLGrilla As String, _
+                                      Grilla As Object, _
+                                      Cnn As SqlConnection, _
+                                      Optional BaseConexion As Integer = ArchivoConexion.BasePrincipal, _
+                                      Optional EsGrilla As Boolean = True)
         Try
             'Abrimos la conexión con SQL
             AbrirConexion_SQLServer(Cnn, BaseConexion)
@@ -176,10 +176,10 @@ Public Class SQL_Server
     End Function
 
 
-    Function ActualizaTablaSQLUpInsDel(ByVal ConsultaSQLGrilla As String, _
-                                       ByVal dt As DataTable, _
-                                       ByVal Cnn As SqlConnection, _
-                                       Optional ByVal BaseConexion As Integer = ArchivoConexion.BasePrincipal)
+    Function ActualizaTablaSQLUpInsDel(ConsultaSQLGrilla As String, _
+                                       dt As DataTable, _
+                                       Cnn As SqlConnection, _
+                                       Optional BaseConexion As Integer = ArchivoConexion.BasePrincipal)
         Try
             'Abrimos la conexión con SQL
             AbrirConexion_SQLServer(Cnn, BaseConexion)
@@ -200,9 +200,9 @@ Public Class SQL_Server
         End Try
     End Function
 
-    Private Function UpInsDelDatabase(ByVal dt As DataTable, _
-                              ByVal sql As String, _
-                              ByVal cn As SqlConnection) As Integer
+    Private Function UpInsDelDatabase(dt As DataTable, _
+                              sql As String, _
+                              cn As SqlConnection) As Integer
 
         ' Si el valor del objeto DataTable es Nothing, provocamos
         ' una excepción.
@@ -259,7 +259,7 @@ Public Class ClaseConectaAccess
 
 
     'consultas insert,delete,update
-    Sub consultaAccion(ByVal consulta As String) 'para hacer las consultar
+    Sub consultaAccion(consulta As String) 'para hacer las consultar
 
         Try
             comand = New OleDb.OleDbCommand(consulta, cnnConex)
@@ -344,16 +344,16 @@ Public Class CrearDocumentoRandom
     Dim LINCONDESP As String
     Dim PPPRPMSUC As String
 
-    Sub GrabarDatos(ByVal Empresa As String, _
-                        ByVal Sucursal As String, _
-                        ByVal Bodega As String, _
-                        ByVal ListaDeCosto As String, _
-                        ByVal TIDO As String, _
-                        ByVal BarEncabezados As Object, _
-                        ByVal BarDetalle As Object, _
-                        ByVal TxtProducto As TextBox, _
-                        ByVal TxtProveedor As TextBox, _
-                        ByVal TablaDePaso As String)
+    Sub GrabarDatos(Empresa As String, _
+                        Sucursal As String, _
+                        Bodega As String, _
+                        ListaDeCosto As String, _
+                        TIDO As String, _
+                        BarEncabezados As Object, _
+                        BarDetalle As Object, _
+                        TxtProducto As TextBox, _
+                        TxtProveedor As TextBox, _
+                        TablaDePaso As String)
 
         Consulta_sql = "SELECT CodEntidad, CodSucursal FROM " & TablaDePaso & " WHERE Marca = '' and Fcc <> ''"
         Ejecutar_consulta_SQL(Consulta_sql, cn1)
@@ -455,26 +455,26 @@ Public Class CrearDocumentoRandom
 
     
 
-    Private Function CrearEncabezadoInsertar(ByVal EMPRESA As String, ByVal TIDO As String, ByVal NUDO As String, _
-                             ByVal ENDO As String, Optional ByVal NUDONODEFI As Integer = 0, _
-                             Optional ByVal TIDOELEC As Integer = 0)
+    Private Function CrearEncabezadoInsertar(EMPRESA As String, TIDO As String, NUDO As String, _
+                             ENDO As String, Optional NUDONODEFI As Integer = 0, _
+                             Optional TIDOELEC As Integer = 0)
         Consulta_sql = "INSERT INTO MAEEDO ( EMPRESA,TIDO,NUDO,ENDO,NUDONODEFI,TIDOELEC ) VALUES " & _
                        "( '" & EMPRESA & "','" & TIDO & "','" & NUDO & "','" & ENDO & "'," & NUDONODEFI & ",0 ) "
         Return Consulta_sql
     End Function
 
-    Private Function CrearEncabezadoActualizar(ByVal IDMAEEDO As String, ByVal SUENDO As String, ByVal ENDOFI As String, ByVal TIGEDO As String, _
-    ByVal SUDO As String, ByVal LUVTDO As String, ByVal FEEMDO As String, ByVal KOFUDO As String, ByVal ESDO As String, ByVal ESPGDO As String, _
-    ByVal CAPRCO As String, ByVal CAPRAD As String, ByVal CAPREX As String, ByVal CAPRNC As String, ByVal MEARDO As String, ByVal MODO As String, _
-    ByVal TIMODO As String, ByVal TAMODO As String, ByVal NUCTAP As String, ByVal VACTDTNEDO As String, ByVal VACTDTBRDO As String, ByVal NUIVDO As String, _
-    ByVal POIVDO As String, ByVal VAIVDO As String, ByVal NUIMDO As String, ByVal VAIMDO As String, ByVal VANEDO As String, ByVal VABRDO As String, _
-    ByVal POPIDO As String, ByVal VAPIDO As String, ByVal FE01VEDO As String, ByVal FEULVEDO As String, ByVal NUVEDO As String, ByVal VAABDO As String, _
-    ByVal MARCA As String, ByVal FEER As String, ByVal NUTRANSMI As String, ByVal NUCOCO As String, ByVal KOTU As String, ByVal LIBRO As String, ByVal LCLV As String, _
-    ByVal ESFADO As String, ByVal KOTRPCVH As String, ByVal NULICO As String, ByVal PERIODO As String, ByVal NUDONODEFI As String, ByVal TRANSMASI As String, _
-    ByVal POIVARET As String, ByVal VAIVARET As String, ByVal RESUMEN As String, ByVal LAHORA As String, ByVal KOFUAUDO As String, ByVal KOOPDO As String, _
-    ByVal ESPRODDO As String, ByVal DESPACHO As String, ByVal HORAGRAB As String, ByVal RUTCONTACT As String, ByVal SUBTIDO As String, ByVal TIDOELEC As String, _
-    ByVal ESDOIMP As String, ByVal CUOGASDIF As String, ByVal BODESTI As String, ByVal PROYECTO As String, ByVal FECHATRIB As String, ByVal NUMOPERVEN As String, _
-    ByVal BLOQUEAPAG As String, ByVal VALORRET As String, ByVal FLIQUIFCV As String, ByVal VADEIVDO As String, ByVal KOCANAL As String)
+    Private Function CrearEncabezadoActualizar(IDMAEEDO As String, SUENDO As String, ENDOFI As String, TIGEDO As String, _
+    SUDO As String, LUVTDO As String, FEEMDO As String, KOFUDO As String, ESDO As String, ESPGDO As String, _
+    CAPRCO As String, CAPRAD As String, CAPREX As String, CAPRNC As String, MEARDO As String, MODO As String, _
+    TIMODO As String, TAMODO As String, NUCTAP As String, VACTDTNEDO As String, VACTDTBRDO As String, NUIVDO As String, _
+    POIVDO As String, VAIVDO As String, NUIMDO As String, VAIMDO As String, VANEDO As String, VABRDO As String, _
+    POPIDO As String, VAPIDO As String, FE01VEDO As String, FEULVEDO As String, NUVEDO As String, VAABDO As String, _
+    MARCA As String, FEER As String, NUTRANSMI As String, NUCOCO As String, KOTU As String, LIBRO As String, LCLV As String, _
+    ESFADO As String, KOTRPCVH As String, NULICO As String, PERIODO As String, NUDONODEFI As String, TRANSMASI As String, _
+    POIVARET As String, VAIVARET As String, RESUMEN As String, LAHORA As String, KOFUAUDO As String, KOOPDO As String, _
+    ESPRODDO As String, DESPACHO As String, HORAGRAB As String, RUTCONTACT As String, SUBTIDO As String, TIDOELEC As String, _
+    ESDOIMP As String, CUOGASDIF As String, BODESTI As String, PROYECTO As String, FECHATRIB As String, NUMOPERVEN As String, _
+    BLOQUEAPAG As String, VALORRET As String, FLIQUIFCV As String, VADEIVDO As String, KOCANAL As String)
 
 
 
@@ -556,115 +556,115 @@ Public Class CrearDocumentoRandom
 
     End Function
 
-    Private Function CrearDetalle(ByVal IDMAEEDO As String, _
-    ByVal ARCHIRST As String, _
-    ByVal EMPRESA As String, _
-    ByVal TIDO As String, _
-    ByVal NUDO As String, _
-    ByVal ENDO As String, _
-    ByVal SUENDO As String, _
-    ByVal NULIDO As String, _
-    ByVal SULIDO As String, _
-    ByVal BOSULIDO As String, _
-    ByVal KOFULIDO As String, _
-    ByVal KOPRCT As String, _
-    ByVal RLUDPR As String, _
-    ByVal UDTRPR As String, _
-    ByVal CAPRCO1 As String, _
-    ByVal CAPRAD1 As String, _
-    ByVal CAPREX1 As String, _
-    ByVal CAPRNC1 As String, _
-    ByVal UD01PR As String, _
-    ByVal CAPRCO2 As String, _
-    ByVal CAPRAD2 As String, _
-    ByVal CAPREX2 As String, _
-    ByVal CAPRNC2 As String, _
-    ByVal UD02PR As String, _
-    ByVal KOLTPR As String, _
-    ByVal MOPPPR As String, _
-    ByVal TIMOPPPR As String, _
-    ByVal TAMOPPPR As String, _
-    ByVal PPPRNELT As String, _
-    ByVal PPPRNE As String, _
-    ByVal PPPRBRLT As String, _
-    ByVal PPPRBR As String, _
-    ByVal PODTGLLI As String, _
-    ByVal VADTNELI As String, _
-    ByVal VADTBRLI As String, _
-    ByVal POIVLI As String, _
-    ByVal VAIVLI As String, _
-    ByVal VAIMLI As String, _
-    ByVal VANELI As String, _
-    ByVal VABRLI As String, _
-    ByVal FEEMLI As String, _
-    ByVal FEERLI As String, _
-    ByVal PPPRPM As String, _
-    ByVal PPPRNERE1 As String, _
-    ByVal PPPRNERE2 As String, _
-    ByVal NOKOPR As String, _
-    ByVal PPOPPR As String, _
-    ByVal LINCONDESP As String, _
-    ByVal PPPRPMSUC As String, _
-    Optional ByVal IDRST As String = "0", _
-    Optional ByVal ENDOFI As String = "", _
-    Optional ByVal LILG As String = "SI", _
-    Optional ByVal LUVTLIDO As String = "", _
-    Optional ByVal NULILG As String = "", _
-    Optional ByVal PRCT As String = "0", _
-    Optional ByVal TICT As String = "", _
-    Optional ByVal TIPR As String = "", _
-    Optional ByVal NUSEPR As String = "", _
-    Optional ByVal NUDTLI As String = "0", _
-    Optional ByVal NUIMLI As String = "0", _
-    Optional ByVal POIMGLLI As String = "0", _
-    Optional ByVal TIGELI As String = "I", _
-    Optional ByVal EMPREPA As String = "", _
-    Optional ByVal TIDOPA As String = "", _
-    Optional ByVal NUDOPA As String = "", _
-    Optional ByVal ENDOPA As String = "", _
-    Optional ByVal NULIDOPA As String = "", _
-    Optional ByVal LLEVADESP As String = "0", _
-    Optional ByVal OPERACION As String = "", _
-    Optional ByVal CODMAQ As String = "", _
-    Optional ByVal ESLIDO As String = "", _
-    Optional ByVal ESFALI As String = "", _
-    Optional ByVal CAFACO As String = "0", _
-    Optional ByVal CAFAAD As String = "0", _
-    Optional ByVal CAFAEX As String = "0", _
-    Optional ByVal CMLIDO As String = "0", _
-    Optional ByVal NULOTE As String = "", _
-    Optional ByVal FVENLOTE As String = "", _
-    Optional ByVal ARPROD As String = "", _
-    Optional ByVal NULIPROD As String = "", _
-    Optional ByVal NUCOCO As String = "", _
-    Optional ByVal NULICO As String = "", _
-    Optional ByVal PERIODO As String = "", _
-    Optional ByVal FCRELOTE As String = "", _
-    Optional ByVal SUBLOTE As String = "", _
-    Optional ByVal ALTERNAT As String = "", _
-    Optional ByVal PRENDIDO As String = "0", _
-    Optional ByVal OBSERVA As String = "", _
-    Optional ByVal KOFUAULIDO As String = "", _
-    Optional ByVal KOOPLIDO As String = "", _
-    Optional ByVal MGLTPR As String = "0", _
-    Optional ByVal TIPOMG As String = "0", _
-    Optional ByVal ESPRODLI As String = "", _
-    Optional ByVal CAPRODCO As String = "0", _
-    Optional ByVal CAPRODAD As String = "0", _
-    Optional ByVal CAPRODEX As String = "0", _
-    Optional ByVal CAPRODRE As String = "0", _
-    Optional ByVal TASADORIG As String = "0", _
-    Optional ByVal CUOGASDIF As String = "0", _
-    Optional ByVal PROYECTO As String = "", _
-    Optional ByVal POTENCIA As String = "0", _
-    Optional ByVal HUMEDAD As String = "0", _
-    Optional ByVal IDTABITPRE As String = "0", _
-    Optional ByVal IDODDGDV As String = "0", _
-    Optional ByVal PODEIVLI As String = "0", _
-    Optional ByVal VADEIVLI As String = "0", _
-    Optional ByVal PRIIDETIQ As String = "0", _
-    Optional ByVal KOLORESCA As String = "", _
-    Optional ByVal KOENVASE As String = "")
+    Private Function CrearDetalle(IDMAEEDO As String, _
+    ARCHIRST As String, _
+    EMPRESA As String, _
+    TIDO As String, _
+    NUDO As String, _
+    ENDO As String, _
+    SUENDO As String, _
+    NULIDO As String, _
+    SULIDO As String, _
+    BOSULIDO As String, _
+    KOFULIDO As String, _
+    KOPRCT As String, _
+    RLUDPR As String, _
+    UDTRPR As String, _
+    CAPRCO1 As String, _
+    CAPRAD1 As String, _
+    CAPREX1 As String, _
+    CAPRNC1 As String, _
+    UD01PR As String, _
+    CAPRCO2 As String, _
+    CAPRAD2 As String, _
+    CAPREX2 As String, _
+    CAPRNC2 As String, _
+    UD02PR As String, _
+    KOLTPR As String, _
+    MOPPPR As String, _
+    TIMOPPPR As String, _
+    TAMOPPPR As String, _
+    PPPRNELT As String, _
+    PPPRNE As String, _
+    PPPRBRLT As String, _
+    PPPRBR As String, _
+    PODTGLLI As String, _
+    VADTNELI As String, _
+    VADTBRLI As String, _
+    POIVLI As String, _
+    VAIVLI As String, _
+    VAIMLI As String, _
+    VANELI As String, _
+    VABRLI As String, _
+    FEEMLI As String, _
+    FEERLI As String, _
+    PPPRPM As String, _
+    PPPRNERE1 As String, _
+    PPPRNERE2 As String, _
+    NOKOPR As String, _
+    PPOPPR As String, _
+    LINCONDESP As String, _
+    PPPRPMSUC As String, _
+    Optional IDRST As String = "0", _
+    Optional ENDOFI As String = "", _
+    Optional LILG As String = "SI", _
+    Optional LUVTLIDO As String = "", _
+    Optional NULILG As String = "", _
+    Optional PRCT As String = "0", _
+    Optional TICT As String = "", _
+    Optional TIPR As String = "", _
+    Optional NUSEPR As String = "", _
+    Optional NUDTLI As String = "0", _
+    Optional NUIMLI As String = "0", _
+    Optional POIMGLLI As String = "0", _
+    Optional TIGELI As String = "I", _
+    Optional EMPREPA As String = "", _
+    Optional TIDOPA As String = "", _
+    Optional NUDOPA As String = "", _
+    Optional ENDOPA As String = "", _
+    Optional NULIDOPA As String = "", _
+    Optional LLEVADESP As String = "0", _
+    Optional OPERACION As String = "", _
+    Optional CODMAQ As String = "", _
+    Optional ESLIDO As String = "", _
+    Optional ESFALI As String = "", _
+    Optional CAFACO As String = "0", _
+    Optional CAFAAD As String = "0", _
+    Optional CAFAEX As String = "0", _
+    Optional CMLIDO As String = "0", _
+    Optional NULOTE As String = "", _
+    Optional FVENLOTE As String = "", _
+    Optional ARPROD As String = "", _
+    Optional NULIPROD As String = "", _
+    Optional NUCOCO As String = "", _
+    Optional NULICO As String = "", _
+    Optional PERIODO As String = "", _
+    Optional FCRELOTE As String = "", _
+    Optional SUBLOTE As String = "", _
+    Optional ALTERNAT As String = "", _
+    Optional PRENDIDO As String = "0", _
+    Optional OBSERVA As String = "", _
+    Optional KOFUAULIDO As String = "", _
+    Optional KOOPLIDO As String = "", _
+    Optional MGLTPR As String = "0", _
+    Optional TIPOMG As String = "0", _
+    Optional ESPRODLI As String = "", _
+    Optional CAPRODCO As String = "0", _
+    Optional CAPRODAD As String = "0", _
+    Optional CAPRODEX As String = "0", _
+    Optional CAPRODRE As String = "0", _
+    Optional TASADORIG As String = "0", _
+    Optional CUOGASDIF As String = "0", _
+    Optional PROYECTO As String = "", _
+    Optional POTENCIA As String = "0", _
+    Optional HUMEDAD As String = "0", _
+    Optional IDTABITPRE As String = "0", _
+    Optional IDODDGDV As String = "0", _
+    Optional PODEIVLI As String = "0", _
+    Optional VADEIVLI As String = "0", _
+    Optional PRIIDETIQ As String = "0", _
+    Optional KOLORESCA As String = "", _
+    Optional KOENVASE As String = "")
 
         FCRELOTE = "'" & Format(Now.Date, "yyyyMMdd") & "'"
         FVENLOTE = FCRELOTE
@@ -689,14 +689,14 @@ Public Class CrearDocumentoRandom
 
     End Function
 
-    Private Function InsertaDescuentosEnDetalle(ByVal IDMAEEDO As Integer, _
-                                        ByVal NULIDO As String, _
-                                        ByVal KODT As String, _
-                                        ByVal PODT As Double, _
-                                        ByVal VADT As Double, _
-                                        ByVal LILG As String, _
-                                        ByVal OPERA As String, _
-                                        ByVal UNITAR As Double)
+    Private Function InsertaDescuentosEnDetalle(IDMAEEDO As Integer, _
+                                        NULIDO As String, _
+                                        KODT As String, _
+                                        PODT As Double, _
+                                        VADT As Double, _
+                                        LILG As String, _
+                                        OPERA As String, _
+                                        UNITAR As Double)
 
         Consulta_sql = "INSERT INTO MAEDTLI( IDMAEEDO,NULIDO,KODT,PODT,VADT,LILG,OPERA,UNITAR) VALUES " & _
         "( " & IDMAEEDO & ",'" & NULIDO & "','" & KODT & "'," & PODT & "," & VADT & ",'" & LILG & "','" & OPERA & "'," & UNITAR & ")"

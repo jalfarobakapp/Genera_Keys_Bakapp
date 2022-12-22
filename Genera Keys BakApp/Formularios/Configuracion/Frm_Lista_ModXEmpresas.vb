@@ -51,11 +51,11 @@ Public Class Frm_Lista_ModXEmpresas
 
     End Sub
 
-    Private Sub Frm_Lista_ModXEmpresas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub Frm_Lista_ModXEmpresas_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Sb_Actualizar_Grilla()
     End Sub
 
-    Private Sub BtnAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnAgregar.Click
+    Private Sub BtnAgregar_Click(sender As System.Object, e As System.EventArgs) Handles BtnAgregar.Click
 
         Dim Fm As New Frm_Genera_Key_Modalidad
         Fm._Cadena_Base = _Cadena_Base

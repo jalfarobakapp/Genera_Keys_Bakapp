@@ -17,7 +17,7 @@ Public Class Frm_Lista_Empresas
 
     End Sub
 
-    Private Sub Frm_Lista_Empresas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub Frm_Lista_Empresas_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
         Dim _Existe = System.IO.File.Exists(_Base_SQlLite_Local)
 
@@ -77,7 +77,7 @@ Public Class Frm_Lista_Empresas
         End With
     End Sub
 
-    Private Sub BtnAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnAgregar.Click
+    Private Sub BtnAgregar_Click(sender As System.Object, e As System.EventArgs) Handles BtnAgregar.Click
 
         Sb_Actualizar_Grilla()
 
@@ -88,14 +88,16 @@ Public Class Frm_Lista_Empresas
 
     End Sub
 
-    Private Sub Grilla_CellDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles Grilla.CellDoubleClick
+    Private Sub Grilla_CellDoubleClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles Grilla.CellDoubleClick
 
         Dim _Fila As DataGridViewRow = Grilla.Rows(Grilla.CurrentRow.Index)
 
+        Dim _Id As Integer = _Fila.Cells("Id").Value
         Dim _RutFila As String = _Fila.Cells("Rut").Value
         Dim _RazonFila As String = _Fila.Cells("Razon").Value
 
         Consulta_sql = "Select * From Zw_Empresas Where Rut = '" & _RutFila & "'"
+        Consulta_sql = "Select * From Zw_Empresas Where Id = " & _Id
         Dim _FilaR As DataRow = _SQLite.Fx_Get_DataRow(Consulta_sql)
 
         Dim Fm As New Frm_Genera_Key_Empresa
@@ -111,4 +113,5 @@ Public Class Frm_Lista_Empresas
         Dim _Temporales = Application.StartupPath
         Shell("explorer.exe " & _Temporales, AppWinStyle.NormalFocus)
     End Sub
+
 End Class
